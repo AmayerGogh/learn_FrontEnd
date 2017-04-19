@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+         <link rel="stylesheet" type="text/css" href="boot.css">
+		 <style>
+		 	.check{
+		   		 background-color:#D2CBCB;
+		 		 border:2px solid orangered;
+		 	}
+		 	.good-list{
+                height: 300px;                  
+                border:2px solid #D2CBCB;
+            }
+		 	.good-list:hover{
+		 		 border:2px solid darkorange;
+		 	}
+		 </style>
+		<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script> 
+ 		<script src="https://cdn.bootcss.com/vue/2.1.10/vue.min.js"></script>
+  		<script src="https://cdn.bootcss.com/vue-resource/1.2.0/vue-resource.min.js"></script>
+        <script>     
+     
+     $(function(){
+     	// http://olyh26zl9.bkt.clouddn.com/address.json
+     	var app =new Vue({
+     		el:"#app1",
+     		data:{
+     			addressList:[],
+     			limitNumber:3,
+     			currentIndex:0,
+     			shoppingCheck:1
+     		},
+     		filters:{
+     		
+     		},
+     		computed:{   
+     			filterAddressList:function(){  //处理，返回一个全新的数组
+     				return this.addressList.slice(0,this.limitNumber);  
+     			}
+     		},
+     		mounted:function(){ //用来初始化     		
+     			this.$nextTick(function(){				    
+     				this.getAddressList();     				
+     			})
+     		},
+     		methods:{
+     			getAddressList:function(){
+     				var _this =this;
+     				this.$http.get("http://olyh26zl9.bkt.clouddn.com/address.json").then(function(data){
+     					console.log(data);
+     					if(data.data.status==0){
+     						console.log(data.data);
+     						_this.addressList =data.data.result;
+     					}else{
+     						alert(data.status);
+     					}
+     				});
+     					
+     			},
+     			more:function(){
+     				this.limitNumber=5;
+     			}
+     		}
+     	});
+  	
+     });
+     	
+     	
+    
+     </script>
+	</head>
+	<body>
+		<div class="container" id="app1">
+			<h1>收货列表</h1>
+			<div class="row" style="height: 500px;">
+				<div class="col-lg-3 " style="" v-for="(item,index) in filterAddressList"  @click="currentIndex =index"> <!--addressList-->
+					<div class="good-list" v-bind:class="{'check':index ==currentIndex}"> 
+							<h1>{{item.userName}}{{index}}</h1>
+							<h2>{{item.streetName}}</h2>
+							<span>{{item.postCode}}</span>
+							<span>{{item.tel}}</span>
+					</div>
+				
+				</div>
+				<div class="col-lg-3 " style="" > <!--addressList-->
+				<div class="good-list" style="text-align: center;"> 
+                     <h1>添加</h1>
+				</div>
+			
+			</div>
+			</div>
+			<div style="height: 20px;text-align: center;">
+				<span @click="more()">more</span><!-- 可以直接写 @click ="limitNumber =5"-->
+			</div>
+			
+			
+			<div class="col-lg-4 good-list" v-bind:class="{'check':shoppingCheck ==1}" @click="shoppingCheck=1">
+				<h2>第一种配送方式</h2>
+			</div>
+			<div class="col-lg-4 good-list" v-bind:class="{'check':shoppingCheck ==2}" @click="shoppingCheck=2">
+				<h2>第二种配送方式</h2>
+			</div>
+			
+		</div> 
+	</body>
+</html>

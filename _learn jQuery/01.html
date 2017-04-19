@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>学习jq</title>
+		<script type="text/javascript" src="js/jquery-2.0.3.js" ></script>
+		<script>
+			
+//			(function(){
+//				let a =123;
+//				function $(){
+//					alert(a);
+//				}
+//				window.$= $;
+//			})();		
+//			$();
+		//回调函数的使用	
+//			function fn1 (){
+//				alert(1);
+//			}
+//			function fn2(){
+//				alert(2);
+//			}
+//		
+//			var cb =$.Callbacks();
+//			cb.add(fn1);
+//			cb.add(fn2);
+//			cb.fire();
+			
+//			(function(){
+//				
+//				alert(1);
+//			})();
+
+
+
+
+//传window的作用
+  
+//(function(window){
+//	
+//})(window);
+
+//面向对象
+
+//function Person(){
+//	
+//}
+//Person.prototype.Age =12;
+//Person.prototype.SayHello =function(){
+//	alert("你好");
+//}
+//var  person =new Person();
+//alert(person.Age);
+//person.SayHello();
+
+
+
+
+function Person(){
+	return new Person.prototype.init();
+}
+Person.prototype.init=function(){
+	
+}
+Person.prototype.SayHello =function(){
+	alert("你好1");
+}
+Person.prototype.init.prototype =Person.prototype;
+
+
+//Person.fn =Person.prototype={
+//	sy:function(){
+//		alert("sy");
+//	}
+//}
+
+
+
+function Aaa(){
+	
+}
+Aaa.prototype={
+	constructor:Aaa,
+	name:"hello",
+	age :30
+}
+var aaa =new Aaa();
+alert(aaa.constructor);
+
+
+
+
+
+		</script>
+		<script>
+			//Person().SayHello();
+			//Person().sy();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
