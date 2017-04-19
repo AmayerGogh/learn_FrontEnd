@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="urf-8">
+
+        <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+        <style type="text/css">
+          
+        @font-face {
+            font-family: 'SegoeMDL2';
+            src: url("fonts/segmdl2-webfont.woff2") format("woff2");
+            font-weight: 100;
+            font-style: normal;
+        }
+        * {
+          margin:0;
+          padding: 0;
+        }
+        body {
+          background: #F1F1F1;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif,SegoeMDL2;
+        }
+
+        </style>
+        <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+        <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>  
+        <script>
+            !(function($){
+                  var defaults ={
+                      color:"red"
+                  } 
+                  $.fn.extend({
+                      height:function(options){
+                         var ops =$.extend(defaults,options);
+                        return this.each(function(){
+                            var obj =$(this);
+                            obj.click(function(){
+                                alert(ops.color);
+                            })
+                        })
+                      }
+                  }); 
+            })(jQuery)   
+
+            $(function(){
+                $(".p1").height({color:"black"});
+            }) 
+        </script>    
+    </head>
+    <body>
+你好
+<div class="p1" style="height:100px;background-color: darkgreen"></div>
+
+    </body>
+</html>   
