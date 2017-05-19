@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>frosted glass</title>
+<style type="text/css">
+body {
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding-top: calc(50vh - 6em);
+    font: 150%/1.6 serif;
+}
+body, .aero::before {
+   background: url("http://cn.bing.com//az/hprichbg/rb/CheetahMom_ZH-CN9990146737_1920x1080.jpg") fixed 0 center;
+   background-size: cover;
+}
+.aero {
+    position: relative;
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 30em;    
+   background: hsla(0,0%,100%,.3);
+    overflow: hidden;
+}
+.aero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px); 
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    margin: -30px;
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+    /*background: rgba(255,0,0,.5);*/
+}
+.aero:active {
+   
+     background: hsla(0,0%,100%,.4);
+     
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="aero">iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.</div>
+
+
+</div>
+<div class="aero">iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.</div>
+
+
+</div>
+</body>
+</html>
