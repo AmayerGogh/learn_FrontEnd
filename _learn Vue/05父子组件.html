@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	 	<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script> 
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<!--<script src="../js/vue1.0.25.js"></script> -->
+		
+	</head>
+    <body>
+        <div id="app">
+            <parent-component>
+            </parent-component>
+         <temp-component></temp-component>
+        </div>
+         <template id="myComponent">
+            <div style="background-color: red;">模板注册方式!</div>
+        </template>
+        
+        
+        <!--子父数据传输-->
+        <div id="app3">
+        	<table-component  v-bind:my-name="name" v-bind:my-age="age"></table-component>
+        </div>
+        <template id="ttComponent" class="table">
+			<table>
+			    <tr>
+			        <th colspan="2">
+			            子组件数据
+			        </th>
+			    </tr>
+			    <tr>
+			        <td>my name</td>
+			        <td>{{ myName }}</td>
+			    </tr>
+			    <tr>
+			        <td>my age</td>
+			        <td>{{ myAge }}</td>
+			    </tr>
+			</table>
+		</template>
+        
+        
+       
+    </body>
+
+    <script>
+        //这是1.0版本的写法
+        var Child = {
+            template: '<p>This is a child component!</p>'
+        }
+        
+        var Parent = {
+            // 在Parent组件内使用<child-component>标签
+            template :'<div><p>This is a Parent component </p><child-component></child-component>123</div>',
+            components: {
+                // 局部注册Child组件，该组件只能在Parent组件内使用
+                'child-component': Child,
+                //尝试下script
+                'sc-component':{
+                	template: '#myComponent'
+                }
+            }
+        }
+       
+        // 全局注册Parent组件
+        Vue.component('parent-component', Parent)
+        
+        new Vue({
+            el: '#app',
+             components:{
+             	//模板注册的方式
+            	'temp-component':{ 
+            		 template: '#ttComponent',
+            		 props:['myName','myAge']
+            	}
+            }
+        })
+        
+     
+        new Vue({
+            el: '#app2',
+            components:{
+            	'my-component':{
+            		 template: '#myComponent'
+            	}
+            }
+        })
+        //子父进行数据传送
+        
+        new Vue({
+        	el:'#app3',
+        	data:{
+        		name:'keep',
+        		age:25
+        	},
+        	components:{
+        		'table-components':{
+        			template:''
+        		}
+        	}
+        })
+        
+    </script>
+</html>
