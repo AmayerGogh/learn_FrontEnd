@@ -17,35 +17,9 @@
             <div style="background-color: red;">模板注册方式!</div>
         </template>
         
-        
-        <!--子父数据传输-->
-        <div id="app3">
-        	<table-component  v-bind:my-name="name" v-bind:my-age="age"></table-component>
-        </div>
-        <template id="ttComponent" class="table">
-			<table>
-			    <tr>
-			        <th colspan="2">
-			            子组件数据
-			        </th>
-			    </tr>
-			    <tr>
-			        <td>my name</td>
-			        <td>{{ myName }}</td>
-			    </tr>
-			    <tr>
-			        <td>my age</td>
-			        <td>{{ myAge }}</td>
-			    </tr>
-			</table>
-		</template>
-        
-        
-       
-    </body>
-
-    <script>
-        //这是1.0版本的写法
+      
+        <script>
+            //这是1.0版本的写法
         var Child = {
             template: '<p>This is a child component!</p>'
         }
@@ -55,11 +29,8 @@
             template :'<div><p>This is a Parent component </p><child-component></child-component>123</div>',
             components: {
                 // 局部注册Child组件，该组件只能在Parent组件内使用
-                'child-component': Child,
-                //尝试下script
-                'sc-component':{
-                	template: '#myComponent'
-                }
+                'child-component': Child
+                
             }
         }
        
@@ -71,23 +42,59 @@
              components:{
              	//模板注册的方式
             	'temp-component':{ 
-            		 template: '#ttComponent',
-            		 props:['myName','myAge']
-            	}
-            }
-        })
-        
-     
-        new Vue({
-            el: '#app2',
-            components:{
-            	'my-component':{
             		 template: '#myComponent'
             	}
             }
         })
-        //子父进行数据传送
-        
+        </script>    
+
+        <div style="border-bottom:1px solid red;margin-top:100px;">
+        </div>   
+
+
+        <!--子父数据传输-->
+        <div id="app3">
+            <h1>表格</h1>
+            <div class="container">
+              <table class="table">
+                <tr>
+                    <th colspan="3">父组件数据</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>{{ name }}</td>
+                    <td><input type="text" v-model="name" /></td>
+                </tr>
+                <tr>
+                    <td>age</td>
+                    <td>{{ age }}</td>
+                    <td><input type="text" v-model="age" /></td>
+                </tr>
+            </table>   
+        	<table-component  v-bind:so-name="name" v-bind:my-age="age"></table-component>
+            </div>
+            <div></div>
+        </div>
+        <template id="ttComponent" >
+			<table class="table"> 
+			    <tr>
+			        <th colspan="2" style="background-color:aquamarine">
+			            子组件数据
+			        </th>
+			    </tr>
+			    <tr>
+			        <td>my name</td>
+			        <td>{{ soName }}</td>
+                     <td><input type="text" v-model="soName" /></td>
+			    </tr>
+			    <tr>
+			        <td>my age</td>
+			        <td>{{ myAge }}</td>
+                     <td><input type="text" v-model="myAge" /></td>
+			    </tr>
+			</table>
+		</template>
+     <script>   
         new Vue({
         	el:'#app3',
         	data:{
@@ -95,11 +102,18 @@
         		age:25
         	},
         	components:{
-        		'table-components':{
-        			template:''
+        		'table-component':{
+        			template:'#ttComponent',
+                    props:['soName','myAge']
+
         		}
         	}
         })
         
     </script>
+        
+       
+    </body>
+
+   
 </html>
