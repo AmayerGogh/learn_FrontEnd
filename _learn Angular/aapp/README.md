@@ -1,3 +1,8 @@
+
+# 这是慕课网上的教程demo
+[Angular2一小时快速入门](http://www.imooc.com/learn/789)
+
+
 # Aapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
