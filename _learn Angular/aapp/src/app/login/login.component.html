@@ -1,0 +1,7 @@
+ <div>
+       <span>文本输入框标签内加一个#username 然后(click)="onClick(username.value)</span>
+       <br/>
+      <input #username type="text">
+      <input #pwd type="text">
+      <button (click)="onClick(username.value,pwd.value)">Login</button>
+</div>
