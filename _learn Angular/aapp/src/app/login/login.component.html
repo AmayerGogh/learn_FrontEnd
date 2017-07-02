@@ -1,7 +1,36 @@
+ <form #formRef="ngForm" (ngSubmit) ="onSubmit(formRef.value)">
+       <fieldset ngModelGroup="login">
+             <!--<fieldset ngModelGroup="login">意味着我们对于fieldset之内的数据都分组到了login对象中。-->
  <div>
        <span>文本输入框标签内加一个#username 然后(click)="onClick(username.value)</span>
        <br/>
-      <input #username type="text">
-      <input #pwd type="text">
-      <button (click)="onClick(username.value,pwd.value)">Login</button>
+        <span>非空验证 #XXX =“ngModel” 用于绑定数据</span>
+        <br/>
+        <span>{{ usernameRef. errors | json}} 用来以json显示</span>
+        <br/>
+      <!--<input #username type="text">
+      <input #pwd type="text">-->
+        <!--<button (click)="onClick(username.value,pwd.value)">Login</button>-->
+        (非空验证)
+      {{usernameRef.valid}}
+        <br/>
+       <div *ngIf="usernameRef.errors?.required">this is required</div>
+        <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors</div>
+      <input   type="text" 
+            name="username" 
+            [(ngModel)] ="username" 
+             #usernameRef ="ngModel"
+              required =""
+               
+              minlength="3"/>
+        <br/>
+      {{pwdRef.valid}}
+        <br/>
+       <div *ngIf="pwdRef.errors?.required">this is required</div>
+      <input  type ="text" name="pwd" [(ngModel)] ="pwd"  #pwdRef="ngModel" required />
+        <br/>
+      <button (click)="onClick()">Login</button>
+      <button type="submit">submit(等同)</button>
 </div>
+       </fieldset>
+</form>
