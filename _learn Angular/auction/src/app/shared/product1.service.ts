@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+
+
+@Injectable() 
 export class Product1Service {
 
   constructor() { }
