@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-search></app-search>
+    </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<router-outlet name="aux"></router-outlet>
+
+<a href="" [routerLink]="['/']" >主页</a>
+<a href="" [routerLink]="['/article']" [queryParams]="{id:1}" >文章详情(第一种传值)</a>
+<a href="" [routerLink]="['/article',1]"  >文章详情(第二种传值)</a>
+<button (click)="toArticleDetails()">文章详情</button>
+<a [routerLink]="[{outlets:{aux:'chat'}}]">辅助路由</a>
+<a [routerLink]="[{outlets:{aux:null}}]">辅助路由close</a>
+<h1>基本的注入样例</h1>
+
+<app-product1></app-product1>
+<app-product2></app-product2>
+

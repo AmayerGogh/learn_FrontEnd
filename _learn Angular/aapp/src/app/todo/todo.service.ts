@@ -31,13 +31,13 @@ export class TodoService{
         };
         // this.todos.push(todo);
         // return this.todos;
-        console.log(todo)
+        console.log(todoItem)
         return this.http
             .post(this.api_url, JSON.stringify(todo), {headers: this.headers})
             .toPromise()
             .then(res =>{ 
                 res.json().data as Todo
-                console.log(res);
+                console.log("res"+res);
             })
             .catch(this.handleError);
    }
@@ -69,7 +69,7 @@ export class TodoService{
               .catch(this.handleError);
   }
    private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); 
+    console.error('出现错误', error); 
     return Promise.reject(error.message || error);
   }
 }
