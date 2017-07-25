@@ -7,6 +7,6 @@ export class Product2Service implements Product1Service {
     return new Product1(1,"三星",5434,"三桑")
   }
 
-  constructor() { }
+  constructor(public str:string) { }
 
 }

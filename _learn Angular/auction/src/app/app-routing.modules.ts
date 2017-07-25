@@ -14,7 +14,7 @@ const routes: Routes = [
     {path:'',redirectTo:'/home',pathMatch:'full'},
     {path:'chat',component:ChatComponent,outlet:'aux'},
     {path:'home',component:HomeComponent},
-    {path:'product/:prodTitle',component:ProductDetailComponent},
+    {path:'product/:productId',component:ProductDetailComponent},
     {path:'article/:id',component:ArticleComponent,children:[
         {path:'',component:ArticleMsgComponent},
         {path:'content/:id',component:ArticleContentComponent}

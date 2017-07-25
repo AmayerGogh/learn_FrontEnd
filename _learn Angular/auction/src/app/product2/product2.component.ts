@@ -6,9 +6,9 @@ import { Product2Service } from "../shared/product2.service";
   selector: 'app-product2',
   templateUrl: './product2.component.html',
   styleUrls: ['./product2.component.css'],
-  providers:[{
-    provide:Product1Service,useClass:Product2Service
-  }]
+  // providers:[{
+  //   provide:Product1Service,useClass:Product2Service
+  // }]
 })
 export class Product2Component implements OnInit {
 

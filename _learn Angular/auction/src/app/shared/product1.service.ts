@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable() 
 export class Product1Service {
 
-  constructor() { }
+  constructor(public str:string) { }
     getProduct1():Product1{
     return new Product1(0,"iphone7",5888,"手机");
   }

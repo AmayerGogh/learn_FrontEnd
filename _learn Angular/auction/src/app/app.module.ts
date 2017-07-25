@@ -24,6 +24,7 @@ import { Product1Component } from './product1/product1.component';
 import { Product1Service } from "./shared/product1.service";
 import { Product2Component } from './product2/product2.component';
 import { Product2Service } from "./shared/product2.service";
+import { ProductService } from "./shared/product.service";
 
 
 
@@ -58,7 +59,21 @@ import { Product2Service } from "./shared/product2.service";
     HttpModule,
   AppRoutingModule
   ],
-  providers: [Product1Service,Product2Service],
+ // providers: [Product1Service,Product2Service],
+  providers:[ProductService,Product2Service,{
+    provide:Product1Service,  //用工厂方法作为一个提供器
+    useFactory:()=>{
+       let dev =Math.random()>0.5;
+       if(dev){  
+         return new Product1Service("服务1");
+       }else{
+         return new Product1Service("服务2");
+       }
+    },
+    //deps:[]
+  },{//??具体的值作为一个提供器
+    provide:"IS_DEV_ENV",useValue:false
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
