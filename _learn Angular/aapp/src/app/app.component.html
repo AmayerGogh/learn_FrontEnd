@@ -15,9 +15,20 @@
   </p>
   <label><input type="checkbox" [(ngModel)]="isShowMore"/>是否显示</label>
   </div>
+<div style="border:1px solid red">
+   
+  <child [message] ="msgToChild" [stockCode]="stock" [amount]="100"
+   (outer)="receive($event)"
+   (one) ="receiveGuPiao($event)"
+  (bGuPiaoEE)="buyHandler($event)"
+   ></child>
 
-<child [message] ="msgToChild" (outer)="receive($event)"></child>
-<p>来自子组件的消息：{{msgFromChild}}</p>
+  <p>来自子组件的消息：{{msgFromChild}}</p>
+  <input type="text" [(ngModel)]="stock" placeholder="这是stock的内容">
+   <p>来自子组件的股票消息：{{aGuPiao.price}}</p>
+   <p>来自子组件的股票消息2：{{bGuPiao.price}}</p>
+  <child2 [guPiao]="bGuPiao"></child2>
+</div>
 
 
 

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
  import {LoginComponent} from './login/login.component';
  import { TodoComponent} from './todo/todo.component';
 import {ChildComponent} from './child.component';
+import {Child2Component} from './child2.component';
 //引入自定义指令
 import { HighlightDirective} from './highlight.directive';
 //引入服务类
@@ -27,6 +28,7 @@ import { InMemoryTodoDbService } from './todo/todo-data';
     AppComponent,
     HighlightDirective,
     ChildComponent,
+    Child2Component,
      LoginComponent,
      TodoComponent
   ],

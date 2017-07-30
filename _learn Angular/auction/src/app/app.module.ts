@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule }  from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 import { AppRoutingModule }     from './app-routing.modules';
@@ -25,6 +25,9 @@ import { Product1Service } from "./shared/product1.service";
 import { Product2Component } from './product2/product2.component';
 import { Product2Service } from "./shared/product2.service";
 import { ProductService } from "./shared/product.service";
+import { BindComponent } from './bind/bind.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { LifeComponent } from './life/life.component';
 
 
 
@@ -51,13 +54,20 @@ import { ProductService } from "./shared/product.service";
 
     Product1Component,
 
-    Product2Component
+    Product2Component,
+
+    BindComponent,
+
+    FilterPipe,
+
+    LifeComponent
   ],
   imports: [
     BrowserModule,
    FormsModule,
     HttpModule,
-  AppRoutingModule
+  AppRoutingModule,
+  ReactiveFormsModule
   ],
  // providers: [Product1Service,Product2Service],
   providers:[ProductService,Product2Service,{

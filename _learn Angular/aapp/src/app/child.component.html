@@ -1,6 +1,19 @@
 <div class ="cmp-2" style="background-color:#2f2f2f">
     <h1>我是子组件</h1>
     <p>来自父组件的消息：{{message}} </p>
-<button (click)="sendToParent()">发送给父组件</button>
-
-     </div>
+    <button (click)="sendToParent()">发送给父组件</button>
+    <h1>我是子主件2</h1>
+    <div>
+        买{{amount}}手{{stockCode}}股票
+        <input type="text" [(ngModel)]="stockCode" placeholder="这是stock的内容">
+    </div>
+    <div style="background-color:red">
+        <h2>我是子组件3随机生产的股票价格1</h2>
+        {{price |number:'2.2-2'}}
+        <h2>我是子组件3随机生产的股票价格2</h2>
+        {{guPiao2.price |number:'2.2-2'}}
+    </div>    
+    <div>
+         <input type="button" value="立即购买股票2" (click)="buyStock($event)">
+    </div>   
+ </div>

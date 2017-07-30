@@ -1,6 +1,14 @@
-<div *ngFor="let product of products" class="col-md-4 col-sm-4 col-lg-4">
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder=""
+      [formControl]="titleFilter">
+    </div>
+  </div>
+</div>
+<div *ngFor="let product of products | filter:'title':keyword" class="col-md-4 col-sm-4 col-lg-4">
   <div class="thumbnail">
-    <img  [src]="imgUrl" alt="">
+    <img  [src]="imgUrl" alt="">   
     <div class="caption">
       <h4 class="pull-right">{{product.price}}元</h4>
       <h4><a [routerLink]="['/product',product.id]">{{product.title}}</a></h4>
