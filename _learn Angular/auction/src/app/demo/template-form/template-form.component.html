@@ -1,0 +1,63 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div ngModelGroup="userInfo">
+    <div>用户名:<input #username1="ngModel" ngModel name="username"></div>
+    <div>手机号:
+      <input type="text" ngModel name="mobile">
+    </div>
+    <div ngModelGroup="passwordsGroup">
+          <div>密码：<input type="password" ngModel name="password"></div>
+          <div>确认密码：<input type="password"  ngModel name="password2"></div>
+    </div>
+    <button type="submit">注册</button>
+  </div>
+</form>
+<div>
+  {{myForm.value | json}}
+</div>
+<div>
+  {{username1.value}}
+</div>
+<hr>
+<h2>响应式</h2>
+<form [formGroup]="formModel" (submit)="onSubmit2(myForm.value)">
+   <div>用户名:<input type="text" formControlName ="username" name="" id=""></div>
+   <div>手机号:<input type="text" formControlName ="mobile" name="" id=""></div>
+   <div formGroupName="passwordsGroup">
+    <div>密码:<input type="text" formControlName ="password" name="" id=""></div>
+    <div>再次输入密码:<input type="text" formControlName ="password2" name="" id=""></div>
+    <button type="submit">注册</button>
+  </div>
+</form>
+<div>
+  {{myForm.value | json}}
+</div>
+<div>
+  {{username1.value}}
+</div>
+<hr>
+
+
+
+
+
+
+
+
+
+
+<hr>
+<!--<form [formGroup]="formModel" (submit)="onSubmit()">
+  <div formGroupName="dateRange">
+    起始日期 <input type="date" formControlName="from" name="" id="">
+    截至日期 <input type="date" formControlName="to" name="" id="">
+  </div>
+  <div>
+    <ul formArrayName="emails">
+      <li *ngFor="let e of this.formModel.get('emails').controls; let i =index;">
+        <input type="text" [formControlName] ="i" name="" id="">
+      </li>
+    </ul>
+    <button (click)="addEmail()">增加email</button>
+  </div>
+  <div><button type="submit">保持</button></div>
+</form>-->

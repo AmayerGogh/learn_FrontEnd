@@ -22,12 +22,13 @@ import { ArticleMsgComponent } from './article-msg/article-msg.component';
 import { ChatComponent } from './chat/chat.component';
 import { Product1Component } from './product1/product1.component';
 import { Product1Service } from "./shared/product1.service";
-import { Product2Component } from './product2/product2.component';
+//import { Product2Component } from './product2/product2.component';
 import { Product2Service } from "./shared/product2.service";
 import { ProductService } from "./shared/product.service";
 import { BindComponent } from './bind/bind.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { LifeComponent } from './life/life.component';
+import { TemplateFormComponent } from './demo/template-form/template-form.component';
 
 
 
@@ -49,24 +50,25 @@ import { LifeComponent } from './life/life.component';
     Code404Component,
     ArticleContentComponent,
     ArticleMsgComponent,
-
     ChatComponent,
 
     Product1Component,
 
-    Product2Component,
+   // Product2Component,
 
     BindComponent,
 
     FilterPipe,
 
-    LifeComponent
+    LifeComponent,
+
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule,
    FormsModule,
     HttpModule,
-  AppRoutingModule,
+  AppRoutingModule, 
   ReactiveFormsModule
   ],
  // providers: [Product1Service,Product2Service],
