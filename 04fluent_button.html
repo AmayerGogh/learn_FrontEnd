@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>frosted glass</title>
+<style type="text/css">
+body {
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding-top: calc(50vh - 6em);
+    font: 150%/1.6 serif;
+}
+.bg{
+	padding:50px;
+	 margin:50px;
+
+}
+/* -button-fluent-design */
+#playpen {
+  width: 600px;
+  height: 300px;
+  border: 1px solid gray;
+  background-color: rgb(155,155,155);
+}
+
+.btn {
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  text-align: center;
+  background-color: rgb(155,155,155);
+  border: 2px solid transparent;
+}
+
+.btn-wrap {
+  width: 100px;
+  height: 30px;
+  padding: 2px;
+  margin: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: rgba(255,255,255,.2);
+  cursor: pointer;
+}
+
+
+	
+</style>
+</head>
+
+<body class="">
+
+<div id="playpen" style="background-color: rgb(155,155,155)">
+    <div>
+      <div class="btn-wrap">
+        <div class="btn">hello</div>
+      </div>
+      <div class="btn-wrap">
+        <div class="btn">world</div>
+      </div>
+    </div>
+    <div>
+      <div class="btn-wrap">
+        <div class="btn">hello</div>
+      </div>
+      <div class="btn-wrap">
+        <div class="btn">world</div>
+      </div>
+    </div>
+  
+    <div id="debug0"></div>
+    <div id="debug1"></div>
+    <div id="debug2"></div>
+    <div id="debug3"></div>
+  </div>
+
+</body>
+ <script src="js/jquery-2.0.3.js"></script> 
+
+
+<script>
+$(function() {
+  var cls = '#playpen'
+
+	var originalBGplaypen = $(cls).css("background-color"),
+		x, y, xy, bgWebKit, bgMoz,
+		lightColor = "rgba(255,255,255,0.75)",
+		gradientSize = 100;
+
+		$(cls).mousemove(function(e) {
+
+			var self = this;
+
+			$('.btn-wrap').each(function(i) {
+
+				x = e.pageX - self.offsetLeft - this.offsetLeft;
+				y = e.pageY - self.offsetTop - this.offsetTop;
+				xy = x + " " + y;
+
+				bgWebKit = "-webkit-gradient(radial, " + xy + ", 0, " + xy + ", " + gradientSize + ", from(" + lightColor + "), to(rgba(255,255,255,0.0))), " + originalBGplaypen;
+				bgMoz    = "-moz-radial-gradient(" + x + "px " + y + "px 45deg, circle, " + lightColor + " 0%, " + originalBGplaypen + " " + gradientSize + "px)";
+
+				$(this).css({ 'background': bgWebKit });
+
+
+			});
+
+
+		}).mouseleave(function() {
+			$(this).css({ background: originalBGplaypen });
+		});
+});
+    </script>
+</html>

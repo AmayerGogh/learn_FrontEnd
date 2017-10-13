@@ -9,22 +9,29 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     margin: 0;
-    padding-top: calc(50vh - 6em);
+
     font: 150%/1.6 serif;
 }
-body, .aero::before {
-   background: url("http://cn.bing.com//az/hprichbg/rb/CheetahMom_ZH-CN9990146737_1920x1080.jpg") fixed 0 center;
-   background-size: cover;
+.bg{
+	padding:50px;
+	 margin:50px;
+
 }
-.aero {
-    position: relative;
-    margin: 0 auto;
-    padding: 1em;
-    max-width: 30em;    
+
+
+/* 亚克力效果 */
+body,.acrylic::before {
+   background: url("http://cn.bing.com/az/hprichbg/rb/Rapadalen_ZH-CN11779950174_1920x1080.jpg") fixed 0 center;
+
+}
+.acrylic {
+    position: relative;   
    background: hsla(0,0%,100%,.3);
     overflow: hidden;
+
 }
-.aero::before {
+.acrylic::before {
+
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -37,25 +44,128 @@ body, .aero::before {
     filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
     /*background: rgba(255,0,0,.5);*/
 }
-.aero:active {
-   
-     background: hsla(0,0%,100%,.4);
-     
+.acrylic:hover {   
+     background: hsla(0,0%,100%,.4);     
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
+}
+.acrylic:active {   
+     background: hsla(0,0%,100%,.6);     
     text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
 }
 
+/* -button-fluent-design */
+#playpen {
+  width: 600px;
+  height: 300px;
+  border: 1px solid gray;
+  background-color: rgb(155,155,155);
+}
 
+.btn {
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  text-align: center;
+  background-color: rgb(155,155,155);
+  border: 2px solid transparent;
+}
+
+.btn-wrap {
+  width: 100px;
+  height: 100px;
+  padding: 2px;
+  margin: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: rgba(255,255,255,.2);
+  cursor: pointer;
+}
+
+
+	
 </style>
 </head>
 
-<body>
-<div class="aero">iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.</div>
+<body class="">
+      
+        <div id="playpen" style="background-color: rgb(155,155,155)">
+            <div>
+                <div class="btn-wrap">
+                    <div class="btn">hello</div>
+                </div>
+                <div class="btn-wrap">
+                    <div class="btn">world</div>
+                </div>
+            </div>
+        <div>
+          <div class="btn-wrap">
+            <div class="btn">hello</div>
+          </div>
+          <div class="btn-wrap">
+            <div class="btn">world</div>
+          </div>
+        </div>
+      
+        <div id="debug0"></div>
+        <div id="debug1"></div>
+        <div id="debug2"></div>
+        <div id="debug3"></div>
+      </div>
+    
 
 
-</div>
-<div class="aero">iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.</div>
+	<div class="bg" >	
+		<br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/>
+		<div class="acrylic">iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.</div>
+		<div class="acrylic">iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.</div>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
 
 
-</div>
+    <h1 class="acrylic">你好,我的世界</h1>
+
+    <h1 class="acrylic"> hover</h1>
+
+
 </body>
+<!-- <script src="js/jquery-2.0.3.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$(function() {
+  var cls = '#playpen'
+
+	var originalBGplaypen = $(cls).css("background-color"),
+		x, y, xy, bgWebKit, bgMoz,
+		lightColor = "rgba(255,255,255,0.75)",
+		gradientSize = 100;
+
+		$(cls).mousemove(function(e) {
+
+			var self = this;
+
+			$('.btn-wrap').each(function(i) {
+
+				x = e.pageX - self.offsetLeft - this.offsetLeft;
+				y = e.pageY - self.offsetTop - this.offsetTop;
+				xy = x + " " + y;
+
+				bgWebKit = "-webkit-gradient(radial, " + xy + ", 0, " + xy + ", " + gradientSize + ", from(" + lightColor + "), to(rgba(255,255,255,0.0))), " + originalBGplaypen;
+				bgMoz    = "-moz-radial-gradient(" + x + "px " + y + "px 45deg, circle, " + lightColor + " 0%, " + originalBGplaypen + " " + gradientSize + "px)";
+
+				$(this).css({ 'background': bgWebKit });
+
+
+			});
+
+
+		}).mouseleave(function() {
+			$(this).css({ background: originalBGplaypen });
+		});
+});
+    </script>
 </html>
