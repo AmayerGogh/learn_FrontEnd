@@ -1,10 +1,10 @@
-import { DePage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('de App', () => {
-  let page: DePage;
+describe('da-mo App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new DePage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {
