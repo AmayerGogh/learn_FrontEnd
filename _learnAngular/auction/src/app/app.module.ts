@@ -74,14 +74,7 @@ import { TemplateFormComponent } from './demo/template-form/template-form.compon
  // providers: [Product1Service,Product2Service],
   providers:[ProductService,Product2Service,{
     provide:Product1Service,  //用工厂方法作为一个提供器
-    useFactory:()=>{
-       let dev =Math.random()>0.5;
-       if(dev){  
-         return new Product1Service("服务1");
-       }else{
-         return new Product1Service("服务2");
-       }
-    },
+    useFactory:selectSer,
     //deps:[]
   },{//??具体的值作为一个提供器
     provide:"IS_DEV_ENV",useValue:false
@@ -89,3 +82,12 @@ import { TemplateFormComponent } from './demo/template-form/template-form.compon
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+function selectSer(){
+  let dev =Math.random()>0.5;
+  if(dev){
+    return new Product1Service("服务1");
+  }else{
+    return new Product1Service("服务2");
+  }
+}
