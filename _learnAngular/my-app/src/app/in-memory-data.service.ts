@@ -1,5 +1,7 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
-export class InMemoryDataService implements InMemoryDbService {
+//原来的写法
+//import { InMemoryDbService } from 'angular-in-memory-web-api';
+//export class InMemoryDataService implements InMemoryDbService
+export class InMemoryDataService  {
   createDb() {
     let heroes = [
       {id: 11, name: 'Mr. Nice'},
