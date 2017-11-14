@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { TestComponent}  from './test/test.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     DashboardComponent,
     HeroDetailComponent,
     HeroesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    TestComponent
+    
   ],
   imports: [
     BrowserModule,AppRoutingModule,FormsModule,
