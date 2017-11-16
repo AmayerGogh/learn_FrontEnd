@@ -8,7 +8,8 @@ const routes: Routes = [
     {path:'',redirectTo:'/home',pathMatch:'full'},
     {path:'controlhtml',component:ControlhtmlComponent},
     {path:'testAnimation',component:TestAnimationComponent},
-    {path:'test3',component:Test3Component}
+    {path:'test3',component:Test3Component},
+    {path:'**',component:ControlhtmlComponent}
    
  
 ];

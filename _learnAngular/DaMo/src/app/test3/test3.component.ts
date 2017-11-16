@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MyHighLightDirective} from './directives/myHighLight.directive'
+import {DelayDirective} from './directives/delay.directive'
 
 @Component({
     selector: 'test3',
