@@ -14,9 +14,9 @@ export class ArticleComponent implements OnInit {
     //接参数 第一种方式（快照）
    // this.articleId =this.routeInfo.snapshot.queryParams["id"]; 
     //接参数 第二种方式 (订阅)
-    this.routeInfo.params.subscribe((params:Params)=>this.articleId =params["id"])
+    //this.routeInfo.params.subscribe((params:Params)=>this.articleId =params["id"])
     //接参数 第二种方式 (快照)
-   //  this.articleId =thi s.routeInfo.snapshot.params["id"]; 
+    // this.articleId =this.routeInfo.snapshot.params["id"]; 
 
    this.routeInfo.data.subscribe((data:{article:Article})=>{
      this.articleId =data.article.id;

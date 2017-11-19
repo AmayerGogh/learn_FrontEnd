@@ -10,6 +10,8 @@ import {ChatComponent} from "./chat/chat.component";
 import {LoginGuard} from "./guard/login.guard";
 import {UnsaveGuard} from "./guard/unsave.guard";
 import { ArticleResolve } from "./guard/article.resolve";
+
+import {TemplateFormComponent} from "./demo/template-form/template-form.component"
 const routes: Routes = [
     {path:'',redirectTo:'/home',pathMatch:'full'},
     {path:'chat',component:ChatComponent,outlet:'aux'},
@@ -24,15 +26,16 @@ const routes: Routes = [
           article:ArticleResolve
       }
     },//第一种传值方式  ?id=1&
-     {path:'article',component:ArticleComponent} //第二种传值方式  /detail/1
+     {path:'article',component:ArticleComponent}, //第二种传值方式  /detail/1
+     {path:'tempform',component:TemplateFormComponent}
     // {path:'**',component:Code404Component}
 ];
 @NgModule({
     imports:[RouterModule.forRoot(routes)],
     exports:[RouterModule],
     providers:[LoginGuard,
-    UnsaveGuard,
-    ArticleResolve
+        UnsaveGuard,
+        ArticleResolve
     ]
 })
 export class AppRoutingModule{

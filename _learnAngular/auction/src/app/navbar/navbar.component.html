@@ -10,9 +10,27 @@
   </div>
   <div class="collapse navbar-collapse navbar-ex1-collapse"> 
     <ul class="nav navbar-nav">
-      <li><a href="#">关于我们</a></li>
-      <li><a href="#">联系我们</a></li>
-      <li><a href="#">网站地图</a></li>
+   
+     <li> <a href="" [routerLink]="['/']" >主页</a></li>
+     <li>
+      <a href="" [routerLink]="['/article']" [queryParams]="{id:1}" >文章详情(第一种传值)</a>
+     </li>
+     <li>
+      <a href="" [routerLink]="['/article',1]"  >文章详情(第二种传值)</a>
+     </li>
+      <li>
+        <button (click)="toArticleDetails()">文章详情</button>
+      </li>
+      <li>
+        <a [routerLink]="[{outlets:{aux:'chat'}}]">辅助路由</a>
+      </li>
+      <li>
+        <a [routerLink]="[{outlets:{aux:null}}]">辅助路由close</a>
+      </li>
+      <li>
+        <a href="#" [routerLink]="['tempform']">表单</a>
+      </li>
+      
     </ul>
   </div>
 </div>

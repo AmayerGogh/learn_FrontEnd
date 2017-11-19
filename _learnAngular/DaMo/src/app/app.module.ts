@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule }     from './app-routing.modules';
+import {FormsModule} from "@angular/forms"
 
 //动画
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -13,6 +14,8 @@ import {ControlhtmlComponent} from './controlhtml/controlhtml.component'
 import {TestAnimationComponent} from  './test-animation/test-animation.component'
 import {Test3Component} from './test3/test3.component'
 import  {CardComponent} from "./card/card.component"
+import {FormQuickStartComponent} from "./form-quick-start/form-quick-start.component"
+import { FormBindingComponent } from "./form-binding/form-binding.component"
 @NgModule({
   declarations: [
     MyHighLightDirective,
@@ -21,12 +24,15 @@ import  {CardComponent} from "./card/card.component"
     ControlhtmlComponent,
     TestAnimationComponent,
     Test3Component,
-    CardComponent
+    CardComponent,
+    FormQuickStartComponent,
+    FormBindingComponent
   ],
   imports: [
     BrowserModule,    
     BrowserAnimationsModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

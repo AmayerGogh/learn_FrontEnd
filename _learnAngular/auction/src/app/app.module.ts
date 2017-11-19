@@ -66,27 +66,27 @@ import { TemplateFormComponent } from './demo/template-form/template-form.compon
   ],
   imports: [
     BrowserModule,
-   FormsModule,
+    FormsModule,
     HttpModule,
-  AppRoutingModule, 
-  ReactiveFormsModule
+    AppRoutingModule, 
+    ReactiveFormsModule
   ],
  // providers: [Product1Service,Product2Service],
   providers:[
     ProductService,
     Product2Service,
-  //   {
-  //   provide:Product1Service,  //用工厂方法作为一个提供器
-  //     useFactory:function(){
-  //       let dev =true;
-  //       if(dev){
-  //         return new Product1Service("服务1");
-  //       }else{
-  //         return new Product1Service("服务2");
-  //       }
-  //     },
-  //   //deps:[]
-  // },
+    {
+      provide:Product1Service,  //用工厂方法作为一个提供器
+        useFactory:function(){
+          let dev =true;
+          if(dev){
+            return new Product1Service("服务1");
+          }else{
+            return new Product1Service("服务2");
+          }
+        },
+    //deps:[]
+  },
   {//??具体的值作为一个提供器
     provide:"IS_DEV_ENV",useValue:false
   }],
