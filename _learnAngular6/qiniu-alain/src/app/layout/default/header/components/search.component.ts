@@ -4,7 +4,7 @@ import { Component, HostBinding, ViewChild, Input, OnInit, ElementRef, AfterView
   selector: 'header-search',
   template: `
   <nz-input-group nzAddOnBeforeIcon="anticon anticon-search">
-    <input nz-input [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
+    <input nz-input nzSize="large" [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
       [placeholder]="'搜索：员工、文件、照片等'">
   </nz-input-group>
   `

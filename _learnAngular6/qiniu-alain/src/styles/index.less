@@ -1,1 +1,38 @@
 // 建议所有项目自定义样式放在该文件夹下
+
+//设置header和导航
+@diff : 200px;
+@diff-collapsed : 64px;
+.aside {  
+     margin-top: 0px;
+     }
+.layout-fixed  .header{
+    left: 200px;
+    width: calc(~"100% - @{diff}")
+}
+.aside-collapsed .header{
+    left: 64px;
+    width: calc(~"100% - @{diff-collapsed}")
+}
+//设置logo
+.layout-fixed .collapsed{
+    display: none;
+}
+.aside-collapsed .expanded{
+    display: none;
+}
+//设置搜索框 这些范围太大了
+.ant-input-group .ant-input{    
+    width: 180px;
+    border-radius: 30px;
+}
+.ant-input-group-addon{
+    border-radius: 30px;
+}
+.ant-input-group{
+    width: 180px;    
+}
+//head 高度
+.header{
+    height: 50px;
+}

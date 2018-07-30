@@ -32,9 +32,9 @@ export class UserLoginComponent implements OnDestroy {
     private modalSrv: NzModalService,
     private settingsService: SettingsService,
     private socialService: SocialService,
-    @Optional()
-    @Inject(ReuseTabService)
-    private reuseTabService: ReuseTabService,
+    //@Optional()
+   // @Inject(ReuseTabService)
+    //private reuseTabService: ReuseTabService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService,
     private startupSrv: StartupService,
   ) {
@@ -114,7 +114,7 @@ export class UserLoginComponent implements OnDestroy {
       }
 
       // 清空路由复用信息
-      this.reuseTabService.clear();
+      //this.reuseTabService.clear();
       // 设置Token信息
       this.tokenService.set({
         token: '123456789',
