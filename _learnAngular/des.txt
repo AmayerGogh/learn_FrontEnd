@@ -1,5 +1,8 @@
-DaMo 大漠的教程
-myapp 官方的教程
-damo2 路由教程
+my-demo angular模板 (已过时)
+myapp  myapp2 官网教程 
 
+DaMo 大漠的教程
+damo2 路由教程  包含一个自定义路由教程
+
+auction 一个比较全的案例
 ** 卸载命令   rimraf node_modules
