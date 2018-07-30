@@ -14,10 +14,13 @@ import { UserLockComponent } from './passport/lock/lock.component';
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
+import { TestComponent } from './page/test/test.component';
+
 
 
 const COMPONENTS = [
   DashboardComponent,
+  TestComponent,
   // passport pages
   UserLoginComponent,
   UserRegisterComponent,

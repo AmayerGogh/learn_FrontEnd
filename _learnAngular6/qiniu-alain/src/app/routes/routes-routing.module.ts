@@ -17,6 +17,9 @@ import { UserLockComponent } from './passport/lock/lock.component';
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
+import { SysModule } from './sys/sys.module';
+import { TestComponent } from './page/test/test.component';
+
 
 const routes: Routes = [
   {
@@ -25,10 +28,16 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘', titleI18n: 'dashboard' } },
+      { path: 'test', component: TestComponent, data: { title: 'test', titleI18n: 'dashboard' } },
+      {
+        path:'sys',
+        loadChildren:'./sys/sys.module#SysModule'
+      },
       // 业务子模块
       // { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' }
     ]
   },
+  //不使用模板就写到这里
   // 全屏布局
   // {
   //     path: 'fullscreen',

@@ -89,10 +89,18 @@ export class StartupService {
             icon: 'anticon anticon-appstore-o'
           },
           {
-            text: '快捷菜单',
+            text: 'sys',
+            link: '/test',
             icon: 'anticon anticon-rocket',
             shortcut_root: true
-          }
+          },
+          {
+            text: 'sys',
+            link: '/sys/log',
+            icon: 'anticon anticon-rocket',
+            shortcut_root: true
+          },
+        
         ]
       }
     ]);
