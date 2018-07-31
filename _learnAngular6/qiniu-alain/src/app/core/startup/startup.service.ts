@@ -62,15 +62,19 @@ export class StartupService {
     // }
     // mock
     const app: any = {
-      name: `ng-alain`,
-      description: `Ng-zorro admin panel front-end framework`
+      name: `Ng-qiniuClient`,
+      description: `Ng-alain搭建的七牛云客户端`
     };
     const user: any = {
       name: 'Admin',
       avatar: './assets/tmp/img/avatar.jpg',
       email: 'cipchk@qq.com',
       token: '123456789'
-    };
+    };    
+    //固定顶部菜单
+    this.settingService.setLayout("fixed",true);
+    //折叠右边菜单
+    this.settingService.setLayout("collapsed",true)
     // 应用信息：包括站点名、描述、年份
     this.settingService.setApp(app);
     // 用户信息：包括姓名、头像、邮箱地址
