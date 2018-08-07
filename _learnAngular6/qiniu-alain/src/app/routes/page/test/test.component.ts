@@ -107,7 +107,8 @@ export class TestComponent implements ControlValueAccessor  {
       // 监听上传流
       const subscription = observable.subscribe({
         next: res => {
-          console.info('上传有一个新进度', res);
+          console.info('上传有一个新进度' );
+          console.log(res)
           this.uploadInProgress = true;
           if (res.total && res.total.percent) {
             this.uploadProgress = (res.total.percent || '').toString().slice(0, 5);

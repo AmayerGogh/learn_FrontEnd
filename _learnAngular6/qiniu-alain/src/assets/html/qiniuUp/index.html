@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/bootstrap.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../../../../../../css/font-awesome.min.css"> -->
+		
+		<link href="cropper.min.css" rel="stylesheet" type="text/css" id="maincss">
+	</head>
+
+	<body>
+
+			<img id="Avatar_Img" />
+			<input type="text" id="Avatar" />
+			
+			<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#avatar-modal" style="margin: 10px;">
+				修改头像
+			</button>
+
+
+
+
+			<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<!--<form class="avatar-form" action="upload-logo.php" enctype="multipart/form-data" method="post">-->
+						<form class="avatar-form">
+							<div class="modal-header">
+								<button class="close" data-dismiss="modal" type="button">&times;</button>
+								<h4 class="modal-title" id="avatar-modal-label">上传图片</h4>
+							</div>
+							<div class="modal-body">
+								<div class="avatar-body">
+									<div class="avatar-upload">
+										<input class="avatar-src" name="avatar_src" type="hidden">
+										<input class="avatar-data" name="avatar_data" type="hidden">
+										<label for="avatarInput" style="line-height: 35px;">图片上传</label>
+										<button class="btn btn-danger"  type="button" style="height: 35px;" onclick="$('input[id=avatarInput]').click();">请选择图片</button>
+										<span id="avatar-name"></span>
+										<input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file"></div>
+									<div class="row">
+										<div class="col-md-9">
+											<div class="avatar-wrapper"></div>
+										</div>
+										<div class="col-md-3">
+											<div class="avatar-preview preview-lg" id="imageHead"></div>
+											<!--<div class="avatar-preview preview-md"></div>
+									<div class="avatar-preview preview-sm"></div>-->
+										</div>
+									</div>
+									<div class="row avatar-btns">
+										<div class="col-md-4">
+											<div class="btn-group">
+												<button class="btn btn-danger fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
+											</div>
+											<div class="btn-group">
+												<button class="btn  btn-danger fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
+											</div>
+										</div>
+										<div class="col-md-5" style="text-align: right;">								
+											<button class="btn btn-danger fa fa-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
+											<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
+											</span>
+										  </button>
+										  <button type="button" class="btn btn-danger fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大图片">
+											<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
+											  <!--<span class="fa fa-search-plus"></span>-->
+											</span>
+										  </button>
+										  <button type="button" class="btn btn-danger fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片">
+											<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
+											  <!--<span class="fa fa-search-minus"></span>-->
+											</span>
+										  </button>
+										  <button type="button" class="btn btn-danger fa fa-refresh" data-method="reset" title="重置图片">
+												<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214">
+										   </button>
+										</div>
+										<div class="col-md-3">
+											<button class="btn btn-danger btn-block avatar-save fa fa-save" type="button" data-dismiss="modal"> 保存修改</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+<!-- 
+			<div class="avatar-body">
+					<div class="avatar-upload">
+						<input class="avatar-src" name="avatar_src" type="hidden">
+						<input class="avatar-data" name="avatar_data" type="hidden">
+						<label for="avatarInput" style="line-height: 35px;">图片上传</label>
+						<button class="btn btn-primary" type="button" style="height: 35px;" onclick="$('input[id=avatarInput]').click();">请选择图片</button>
+						<span id="avatar-name"></span>
+						<input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file" accept="image/*">
+					</div>
+					<div class="row">
+						<div class="col-md-9">
+							<div class="avatar-wrapper"></div>
+						</div>
+						<div class="col-md-3">
+							<div class="avatar-preview preview-lg" id="imageHead"></div>
+							
+							<h3>比例</h3>
+							<div class="btn-group">
+								<button class="btn btn-primary btn-xs btn_setAspectRatio" data-method="setAspectRatio" data-option="1.7777" type="button">
+									<span class="docs-tooltip" data-toggle="tooltip" title="">
+										16:9
+									</span>
+								</button>
+								<button type="button" class="btn btn-xs btn-primary btn_setAspectRatio" data-option="1.333" data-method="setAspectRatio">
+									<span class="docs-tooltip" data-toggle="tooltip" title="">
+										4:3
+									</span>
+								</button>
+								<button type="button" class="btn btn-xs btn-primary btn_setAspectRatio" data-option="1" data-method="setAspectRatio">
+									<span class="docs-tooltip" data-toggle="tooltip" title="">
+										1:1
+									</span>
+								</button>
+								<button type="button" class="btn btn-xs btn-primary btn_setAspectRatio" data-option="0" data-method="setAspectRatio">
+									<span class="docs-tooltip" data-toggle="tooltip" title="">
+										自定义
+									</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="row avatar-btns">
+						<div class="col-md-4">
+							<div class="btn-group">
+								<button class="btn btn-primary fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
+							</div>
+							<div class="btn-group">
+								<button class="btn  btn-primary fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
+							</div>
+						</div>
+						<div class="col-md-5" style="text-align: right;">
+							<button class="btn btn-primary fa fa-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
+								<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
+								</span>
+							</button>
+							<button type="button" class="btn btn-primary fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大图片">
+								<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
+								
+								</span>
+							</button>
+							<button type="button" class="btn btn-primary fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片">
+								<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
+									
+								</span>
+							</button>
+							<button type="button" class="btn btn-primary fa fa-refresh" data-method="reset" title="重置图片">
+								<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214"></span>
+							</button>
+						</div>
+						<div class="col-md-3">
+							<button class="btn btn-primary btn-block avatar-save fa fa-save" type="button" data-dismiss="modal"> 保存修改</button>
+						</div>
+					</div>
+				</div>
+		 -->
+		<script src='../../../../../../js/jquery-2.0.3.js'></script>
+		<script src="cropper.js"></script>
+		<script src="sitelogo.js"></script>
+		<script src="html2canvas.min.js"></script>
+		
+		<script>
+				$('#avatar-modal #avatarInput').on('change', function (e) {
+					var filemaxsize = 1024 * 5;//5M
+					var target = $(e.target);
+					var Size = target[0].files[0].size / 1024;
+					if (Size > filemaxsize) {
+						alert('图片过大，请重新选择!');
+						$("#avatar-modal .avatar-wrapper").childre().remove;
+						return false;
+					}
+					if (!this.files[0].type.match(/image.*/)) {
+						alert('请选择正确的图片!')
+					} else {
+						var filename = document.querySelector("#avatar-modal #avatar-name");
+						var texts = document.querySelector("#avatar-modal #avatarInput").value;
+						var teststr = texts;
+						testend = teststr.match(/[^\\]+\.[^\(]+/i);
+						filename.innerHTML = testend;
+					}
+				});
+				$("#avatar-modal .avatar-save").on("click", function () {
+					var img_lg = $('#avatar-modal #imageHead');
+					// 截图小的显示框内的内容
+					html2canvas(img_lg, {
+						allowTaint: true,
+						taintTest: false,
+						onrendered: function (canvas) {
+							canvas.id = "mycanvas";
+							var dataUrl = canvas.toDataURL("image/jpeg");
+							var newImg = document.createElement("img");
+							newImg.src = dataUrl;
+							var data = {};
+							data.img = dataUrl;
+							data.fname = $("#avatar-modal #avatar-name").html()
+							$.ajax({
+								url: "/ajax/uploadBase64",
+								data: data,
+								type: "POST",
+								dataType: 'json',
+								success: function (data) {
+									if (data.State == '1') {
+										$('#Avatar_Img').attr('src', data.Url);
+										$('input#Avatar').val(data.Url);
+									} else {
+										alertMsg(data.ErrorMessage)
+									}
+								}
+							});
+						}
+					});
+				})
+				$(".btn_setAspectRatio").click(function () {
+					var num =$(this).data("option");
+					setAspectRatio(num)
+				})
+		</script>
+
+	</body>
+</html>
