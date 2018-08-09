@@ -41,7 +41,7 @@
 		support: {
 			fileList: !!$('<input type="file">').prop('files'),
 			blobURLs: !!window.URL && URL.createObjectURL,
-			formData: !!window.FormData
+			//formData: !!window.FormData
 		},
 
 		init: function() {

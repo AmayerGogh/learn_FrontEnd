@@ -8,16 +8,18 @@
  * Date: 2016-09-03T05:50:45.412Z
  */
 (function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as anonymous module.
-    define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
-    // Node / CommonJS
-    factory(require('jquery'));
-  } else {
-    // Browser globals.
-    factory(jQuery);
-  }
+  // if (typeof define === 'function' && define.amd) {
+  //   // AMD. Register as anonymous module.
+  //   define(['jquery'], factory);
+  // } else if (typeof exports === 'object') {
+  //   // Node / CommonJS
+  //   factory(require('jquery'));
+  // } else {
+  //   // Browser globals.
+  //   factory(jQuery);
+  // }
+ 
+  factory(require('./jquery-2.0.3.min.js'));
 })(function ($) {
 
   'use strict';

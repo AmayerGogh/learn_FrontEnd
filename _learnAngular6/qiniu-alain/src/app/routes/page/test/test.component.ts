@@ -7,7 +7,7 @@ import * as qiniu from 'qiniu-js'
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
-  styleUrls:['./test.component.css']
+  styleUrls:['../../../../assets/common/css/bootstrap.css', './test.component.css']
 })
 export class TestComponent implements ControlValueAccessor  { 
 
@@ -34,11 +34,13 @@ export class TestComponent implements ControlValueAccessor  {
   public  onModelChange:Function = () => {};
   public  onModelTouched:Function = () => {};
 
+ 
   // 构造函数
   constructor(private _renderer:Renderer) {}
 
   ngOnInit() {
     this.getUpToken();
+     
   }
 
   // 获取上传 token

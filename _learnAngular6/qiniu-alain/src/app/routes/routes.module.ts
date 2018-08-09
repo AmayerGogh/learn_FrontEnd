@@ -15,12 +15,14 @@ import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
 import { TestComponent } from './page/test/test.component';
+import { Test2Component } from './page/test2/test2.component';
 
 
 
 const COMPONENTS = [
   DashboardComponent,
   TestComponent,
+  Test2Component,
   // passport pages
   UserLoginComponent,
   UserRegisterComponent,

@@ -100,6 +100,12 @@ export class StartupService {
           },
           {
             text: 'sys',
+            link: '/test2',
+            icon: 'anticon anticon-rocket',
+            shortcut_root: true
+          },
+          {
+            text: 'sys',
             link: '/sys/log',
             icon: 'anticon anticon-rocket',
             shortcut_root: true
