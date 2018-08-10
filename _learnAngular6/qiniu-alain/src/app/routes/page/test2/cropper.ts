@@ -2,28 +2,37 @@
 //require("../../../../assets/common/js/jquery-2.0.3.min.js")
 import  "../../../../assets/common/js/jquery-2.0.3.min.js";
 import  "../../../../assets/common/js/cropper.js"
+
 //jquery("").html();
 //console.log($("body").html());
 declare var jquery,$:any; 
 declare var cropper:any;
 
+
 export class CropperHelper{      
 
-      public get():any{    
-
-            return $("#pictureWrapper").html();
-      }
-      public init():void{
+      // get():any{    
+      //       return $("#pictureWrapper").html();
+      // } 
+      
+      init():void{
             new CropAvatar($('#avatar-form'));
+            
       }
-      public setAspectRatio(t:any) {   
+      setAspectRatio(t:Number) {   
             if (t==0) {
                   t == null;
             }
             $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper('setAspectRatio', t);
       }
+      getCanvas(){
 
-
+      }
+      //$img.cropper(data.method, data.option);
+      getCanvasData(){            
+            var data = $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("getCanvasData")
+            console.log(data)
+      }
 
 
 }
@@ -168,14 +177,20 @@ CropAvatar.prototype = {
       },
 
       submit: function() {
-            if(!this.$avatarSrc.val() && !this.$avatarInput.val()) {
-                  return false;
-            }
+            
+            var $imgData= this.$img.cropper("getCroppedCanvas");
+            var dataurl = $imgData.toDataURL('image/png');  //dataurl便是base64图片
+            $("#Avatar_Img").attr("src",dataurl)
 
-            if(this.support.formData) {
-                  this.ajaxUpload();
-                  return false;
-            }
+            // 修改原来的提交方式
+            // if(!this.$avatarSrc.val() && !this.$avatarInput.val()) {
+            //       return false;
+            // }
+
+            // if(this.support.formData) {
+            //       this.ajaxUpload();
+            //       return false;
+            // }
       },
 
       rotate: function(e) {
@@ -205,10 +220,9 @@ CropAvatar.prototype = {
                   this.$img.cropper('replace', this.url);
             } else {
                 this.$img = $('<img src="' + this.url + '">');
-          
+                  console.log(this.url);
                   this.$avatarWrapper.empty().html(this.$img);
-                  this.$img.cropper({
-                        //aspectRatio: 1 ,///����
+                  this.$img.cropper({                        
                         preview: this.$avatarPreview.selector,
                         strict: false,
                         crop: function(data) {
@@ -236,13 +250,13 @@ CropAvatar.prototype = {
       },
 
       ajaxUpload: function() {
-            var url = this.$avatarForm.attr('action'),
+            var url = "http://localhost:62114/api/qiniu",
                   data = new FormData(this.$avatarForm[0]),
                   _this = this;
 
             $.ajax(url, {
                   headers: {
-                        'X-XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        //'X-XSRF-TOKEN':'*'
                   },
                   type: 'post',
                   data: data,
@@ -259,6 +273,7 @@ CropAvatar.prototype = {
                   },
 
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert("error")
                         if (this.uploaded) {
                             this.uploaded = false;
                             this.cropDone(); 
@@ -287,26 +302,27 @@ CropAvatar.prototype = {
             //this.$loading.fadeIn();
       },
 
-//		submitDone: function(data) {
-//			if($.isPlainObject(data)) {
-//				if(data.result) {
-//					this.url = data.result;
-//					if(this.support.datauri || this.uploaded) {
-//						this.uploaded = false;
-//						this.cropDone();
-//					} else {
-//						this.uploaded = true;
-//						this.$avatarSrc.val(this.url);
-//						this.startCropper();
-//					}
-//					this.$avatarInput.val('');
-//				} else if(data.message) {
-//					this.alert(data.message);
-//				}
-//			} else {
-//				this.alert('Failed to response');
-//			}
-//		},
+		submitDone: function(data) {
+			// if($.isPlainObject(data)) {
+			// 	if(data.result) {
+			// 		this.url = data.result;
+			// 		if(this.support.datauri || this.uploaded) {
+			// 			this.uploaded = false;
+			// 			this.cropDone();
+			// 		} else {
+			// 			this.uploaded = true;
+			// 			this.$avatarSrc.val(this.url);
+			// 			this.startCropper();
+			// 		}
+			// 		this.$avatarInput.val('');
+			// 	} else if(data.message) {
+			// 		this.alert(data.message);
+			// 	}
+			// } else {
+			// 	this.alert('Failed to response');
+                  // }
+                  alert(1);
+		},
 
       submitFail: function(msg) {
             this.alert(msg);
@@ -332,5 +348,6 @@ CropAvatar.prototype = {
             ].join('');
 
             this.$avatarUpload.after($alert);
-      }
+      },
+     
 };

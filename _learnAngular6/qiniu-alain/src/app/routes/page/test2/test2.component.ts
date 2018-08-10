@@ -12,13 +12,20 @@ import {CropperHelper} from './cropper'
 })
 export class Test2Component implements OnInit  {
   jQuery:any;
+  crop: CropperHelper;
   ngOnInit(): void { 
-     let crop = new CropperHelper();
-      crop.init();
-      let c = crop.get();
-      console.log(c) 
+      this.crop = new CropperHelper();
+      this.crop.init();
+      //let c = this.crop.get();
+      //console.log(c)       
 
   } 
+  setAspectRatio(value:number):void{
+      this.crop.setAspectRatio(value);    
+  }
+  getCanvasData(){
+    this.crop.getCanvasData();  
+  }
 
   
    
