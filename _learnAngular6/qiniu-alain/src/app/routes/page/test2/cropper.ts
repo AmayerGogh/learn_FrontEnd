@@ -33,6 +33,14 @@ export class CropperHelper{
             var data = $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("getCanvasData")
             console.log(data)
       }
+      getImageData(){            
+            var data = $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("getImageData")
+            console.log(data)
+      }
+      getCropBoxData(){            
+            var data = $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("getCropBoxData")
+            console.log(data)
+      }
 
 
 }
@@ -45,13 +53,15 @@ function CropAvatar($element) {
       this.$avatar = this.$avatarView.find('img');
       this.$avatarUpload = this.$avatarForm.find('.avatar-upload');
       this.$avatarSrc = this.$avatarForm.find('.avatar-src');
-      this.$avatarData = this.$avatarForm.find('.avatar-data');
+     // this.$avatarData = this.$avatarForm.find('.avatar-data');
       this.$avatarInput = this.$avatarForm.find('.avatar-input');
       this.$avatarSave = this.$avatarForm.find('.avatar-save');
       this.$avatarBtns = this.$avatarForm.find('.avatar-btns');
 
       this.$avatarWrapper = this.$avatarForm.find('.avatar-wrapper');
       this.$avatarPreview = this.$avatarForm.find('.avatar-preview');
+    
+      this.$submit=this.$avatarForm.find('#submit')
 
       this.init();
 }
@@ -79,7 +89,7 @@ CropAvatar.prototype = {
       addListener: function() {
             this.$avatarView.on('click', $.proxy(this.click, this));
             this.$avatarInput.on('change', $.proxy(this.change, this));
-            this.$avatarForm.on('submit', $.proxy(this.submit, this));
+            this.$submit.on('click', $.proxy(this.submit, this));
             this.$avatarBtns.on('click', $.proxy(this.rotate, this));
       },
 
@@ -226,14 +236,21 @@ CropAvatar.prototype = {
                         preview: this.$avatarPreview.selector,
                         strict: false,
                         crop: function(data) {
-                              var json = [
-                                    '{"x":' + data.x,
-                                    '"y":' + data.y,
-                                    '"height":' + data.height,
-                                    '"width":' + data.width,
-                                    '"rotate":' + data.rotate + '}'
-                              ].join();
-                              _this.$avatarData.val(json);
+                              //console.log(data);
+                              // var json = [
+                              //       '{"x":' + data.x,
+                              //       '"y":' + data.y,
+                              //       '"height":' + data.height,
+                              //       '"width":' + data.width,
+                              //       '"rotate":' + data.rotate + '}'
+                              // ].join();
+                              //_this.$avatarData.val(json);
+                              //不能提前声明
+                              $('#avatar-preview_x').val(data.x);
+                              $('#avatar-preview_y').val(data.y);
+                              $('#avatar-preview_height').val(data.height);
+                              $('#avatar-preview_width').val(data.width);
+                              
                         }
                   });
 

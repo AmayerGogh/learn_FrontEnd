@@ -1,89 +1,89 @@
-<img id="Avatar_Img" />
-<input type="text" id="Avatar" />		
+<div class="content__title">
+  <h1>裁切上传</h1> 
+</div>
+
+
 
 <div  id="avatar-modal" class="container">
   <form id="avatar-form">							
     <div class="avatar-body">
-      <div class="avatar-upload">
-        <input class="avatar-src" name="avatar_src" type="hidden">
-        <input class="avatar-data" name="avatar_data" type="hidden">
-        <label for="avatarInput" style="line-height: 35px;">图片上传</label>
-        <button nz-button nzType="primary" onclick="$('input[id=avatarInput]').click();">请选择图片</button>
-        
+      <div class="avatar-upload">      
         <span id="avatar-name"></span>
-        <input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file" accept="image/*">
+        <button nz-button nzType="primary" onclick="$('input[id=avatarInput]').click();">请选择图片</button>              
+        <input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file" accept="image/*" style="display:none">
       </div>
       <div class="nz-row">
-        <div nz-col nzSpan="18">
+        <div nz-col nzSpan="14">
           <div class="avatar-wrapper"></div> 
         </div>
-        <div nz-col nzSpan="6">
-          <div class="avatar-preview preview-lg" id="imageHead"></div>
-          
-          <h3>比例</h3>
-          <nz-button-group>
-              <button nz-button nzType="primary" (click)="setAspectRatio(1.7777)"> 16:9</button>
-              <button nz-button nzType="primary" (click)="setAspectRatio(1.3333)">  4:3</button>
-              <button nz-button nzType="primary" (click)="setAspectRatio(1)">1:1</button>
-              <button nz-button nzType="primary" (click)="setAspectRatio(0)"> 自定义</button>                          
-          </nz-button-group>  
-        
+        <div nz-col nzSpan="10">
+          <div style="margin-left: 10px;margin-bottom: 10px;">
+              <div style="height: 200px">
+                  <div class="avatar-preview preview-lg" id="imageHead"></div>
+              </div>              
+                <div style="margin-bottom: 16px;">
+                  <nz-input-group nzAddOnBefore="x">
+                    <input type="text" nz-input  id="avatar-preview_x">
+                  </nz-input-group>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <nz-input-group nzAddOnBefore="y">
+                      <input type="text" nz-input  id="avatar-preview_y">
+                    </nz-input-group>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <nz-input-group nzAddOnBefore="width" >
+                      <input type="text" nz-input id="avatar-preview_width">
+                    </nz-input-group>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <nz-input-group nzAddOnBefore="heigth" >
+                      <input type="text" nz-input id="avatar-preview_height">
+                    </nz-input-group>
+                </div>
+          </div>                     
         </div>
       </div>
-      <div class="nz-row avatar-btns">
-        <div nz-col nzSpan="8">
-          <nz-button-group>
-              <button nz-button nzType="primary" data-method="rotate" data-option="-90" >向左旋转</button>
-              <button nz-button nzType="primary" data-method="rotate" data-option="90" >向右旋转</button>
-          </nz-button-group>
-          <!-- <div class="btn-group">
-
-            <button class="btn btn-primary fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
-            <button class="btn  btn-primary fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
-          </div>          -->
+      <div class="ng-row">
+        <div nz-col nzSpan="14">
+            <h3>操作</h3>
+            <nz-button-group>
+                <button nz-button nzType="primary" (click)="setAspectRatio(1.7777)"> 16:9</button>
+                <button nz-button nzType="primary" (click)="setAspectRatio(1.3333)">  4:3</button>
+                <button nz-button nzType="primary" (click)="setAspectRatio(1)">1:1</button>
+                <button nz-button nzType="primary" (click)="setAspectRatio(0)"> 自定义</button>                          
+            </nz-button-group>  
+           
+            <nz-button-group>
+                <button nz-button nzType="primary" data-method="rotate" data-option="-90" >向左旋转</button>
+                <button nz-button nzType="primary" data-method="rotate" data-option="90" >向右旋转</button>
+            </nz-button-group>
+            <nz-button-group>
+                <button nz-button nzType="primary" data-method="setDragMode" data-option="move">
+                  移动
+                </button>      
+                <button nz-button nzType="primary" data-method="zoom" data-option="0.1">
+                    <i class="anticon anticon-plus"></i> 放大图片
+                </button>
+                <button nz-button nzType="primary" data-method="zoom" data-option="-0.1">
+                    <i class="anticon anticon-minus"></i> 缩小图片
+                </button>
+                <button nz-button nzType="primary" data-method="reset">
+                    <i class="anticon anticon-reload"></i> 重置
+                </button>
+             </nz-button-group>
         </div>
-        <div nz-col nzSpan="10" style="text-align: right;">
-           <nz-button-group>
-              <button nz-button nzType="primary" data-method="setDragMode" data-option="move">
-                移动
-              </button>      
-              <button nz-button nzType="primary" data-method="zoom" data-option="0.1">
-                  <i class="anticon anticon-plus"></i> 放大图片
-              </button>
-              <button nz-button nzType="primary" data-method="zoom" data-option="-0.1">
-                  <i class="anticon anticon-minus"></i> 缩小图片
-              </button>
-              <button nz-button nzType="primary" data-method="reset">
-                  <i class="anticon anticon-reload"></i> 重置
-              </button>
-           </nz-button-group>
-          <!-- <button class="btn btn-primary fa fa-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
-            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
-              移动
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary " data-method="zoom" data-option="0.1" title="放大图片">
-            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
-              <i class="anticon anticon-plus"></i>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片">
-            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
-              <i class="anticon anticon-minus"></i>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary fa fa-refresh" data-method="reset" title="重置图片">
-            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214">
-              <i class="anticon anticon-reload"></i>
-            </span>
-          </button> -->
-        </div>
-        <div nz-col nzSpan="6">
-          <button nz-button nzType="primary" type="submit" > 保存修改</button>
-        </div>
+        <div nz-col nzSpan="10">
+            <button nz-button nzType="primary" id="submit" > 保存修改</button>
+          </div>
       </div>
+   
     </div>
   </form>
 </div>
 
-<button nz-button nzType="primary" (click)="getCanvasData()"> getCanvasData</button>
+<div class="nz-row">
+    <img id="Avatar_Img" />
+    <input type="text" id="Avatar" />		
+</div>
+

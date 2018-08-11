@@ -26,6 +26,12 @@ export class Test2Component implements OnInit  {
   getCanvasData(){
     this.crop.getCanvasData();  
   }
+  getImageData(){            
+    this.crop.getImageData();
+}
+   getCropBoxData(){            
+    this.crop.getCropBoxData();
+}
 
   
    
