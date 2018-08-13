@@ -62,7 +62,7 @@ function CropAvatar($element) {
       this.$avatarPreview = this.$avatarForm.find('.avatar-preview');
     
       this.$submit=this.$avatarForm.find('#submit')
-
+      this.$avatarSet =this.$avatarForm.find(".avatar-set")
       this.init();
 }
 
@@ -91,6 +91,9 @@ CropAvatar.prototype = {
             this.$avatarInput.on('change', $.proxy(this.change, this));
             this.$submit.on('click', $.proxy(this.submit, this));
             this.$avatarBtns.on('click', $.proxy(this.rotate, this));
+            
+
+           
       },
 
       // initTooltip: function() {
@@ -255,6 +258,18 @@ CropAvatar.prototype = {
                   });
 
                   this.active = true;
+                  //todo 这个没用
+                  // console.log(this.$avatarSet)
+                  // $(".avatar-set").on("blur",function(){
+                        
+                  //       var data ={"left": $('#avatar-preview_x').val(), 
+                  //       "top": $('#avatar-preview_y').val(),
+                  //      "width": $('#avatar-preview_width').val(),
+                  //       "height": $('#avatar-preview_height').val()
+                  //    }
+                  //    console.log(data)
+                  //       $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("setCropBoxData",data)
+                  // })
             }
       },
 
