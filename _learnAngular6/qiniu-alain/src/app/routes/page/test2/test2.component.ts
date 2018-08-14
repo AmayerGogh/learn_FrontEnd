@@ -14,12 +14,15 @@ export class Test2Component implements OnInit  {
   jQuery:any;
   crop: CropperHelper;
   ngOnInit(): void { 
-      this.crop = new CropperHelper();
-      this.crop.init();
-      //let c = this.crop.get();
-      //console.log(c)       
+     
 
   } 
+  ngAfterViewInit() :void{
+    this.crop = new CropperHelper();
+    this.crop.init();
+    //let c = this.crop.get();
+    //console.log(c)       
+  }
   setAspectRatio(value:number):void{
       this.crop.setAspectRatio(value);    
   }
@@ -32,7 +35,9 @@ export class Test2Component implements OnInit  {
    getCropBoxData(){            
     this.crop.getCropBoxData();
 }
-
+//没用
+  setCroppedCanvas(){
+    this.crop.setCroppedCanvas();
+  }
   
-   
 }

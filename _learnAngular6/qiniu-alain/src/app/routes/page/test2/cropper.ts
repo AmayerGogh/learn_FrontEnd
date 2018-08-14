@@ -42,6 +42,19 @@ export class CropperHelper{
             console.log(data)
       }
 
+      //没用
+      setCroppedCanvas(){                       
+            var data ={
+                  "left": $('#avatar-preview_x').val(), 
+                  "top": $('#avatar-preview_y').val(),
+                  "width": $('#avatar-preview_width').val(),
+                  "height": $('#avatar-preview_height').val()
+                  }
+            console.log(data) 
+            $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("setCropBoxData",data)
+      
+      }
+
 
 }
 
@@ -62,7 +75,7 @@ function CropAvatar($element) {
       this.$avatarPreview = this.$avatarForm.find('.avatar-preview');
     
       this.$submit=this.$avatarForm.find('#submit')
-      this.$avatarSet =this.$avatarForm.find(".avatar-set")
+      this.$avatarSet =this.$avatarForm.find(".avatar-set") 
       this.init();
 }
 
@@ -91,9 +104,9 @@ CropAvatar.prototype = {
             this.$avatarInput.on('change', $.proxy(this.change, this));
             this.$submit.on('click', $.proxy(this.submit, this));
             this.$avatarBtns.on('click', $.proxy(this.rotate, this));
-            
+            this.$avatarSet.on('blur', $.proxy(this.blur, this))
 
-           
+           console.log(this.$avatarSet)
       },
 
       // initTooltip: function() {
@@ -249,30 +262,34 @@ CropAvatar.prototype = {
                               // ].join();
                               //_this.$avatarData.val(json);
                               //不能提前声明
-                              $('#avatar-preview_x').val(data.x);
-                              $('#avatar-preview_y').val(data.y);
-                              $('#avatar-preview_height').val(data.height);
-                              $('#avatar-preview_width').val(data.width);
+                            
+                              $('#avatar-preview_x').val(data.x.toFixed(2));
+                              $('#avatar-preview_y').val(data.y.toFixed(2));
+                              $('#avatar-preview_height').val(data.height.toFixed(2));
+                              $('#avatar-preview_width').val(data.width.toFixed(2));
                               
                         }
                   });
 
                   this.active = true;
-                  //todo 这个没用
-                  // console.log(this.$avatarSet)
-                  // $(".avatar-set").on("blur",function(){
-                        
-                  //       var data ={"left": $('#avatar-preview_x').val(), 
-                  //       "top": $('#avatar-preview_y').val(),
-                  //      "width": $('#avatar-preview_width').val(),
-                  //       "height": $('#avatar-preview_height').val()
-                  //    }
-                  //    console.log(data)
-                  //       $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("setCropBoxData",data)
-                  // })
+                
             }
       },
-
+      //无效
+      blur:function(){
+            var data ={
+                  "left": $('#avatar-preview_x').val(), 
+                  "top": $('#avatar-preview_y').val(),
+                  "width": $('#avatar-preview_width').val(),
+                  "height": $('#avatar-preview_height').val()
+             }                   
+            this.$img.cropper('setCropBoxData', {
+                  "left": $('#avatar-preview_x').val(),
+                  "top": $('#avatar-preview_y').val(), 
+                  "width": $('#avatar-preview_width').val(), 
+                  "height": $('#avatar-preview_height').val()
+            });
+      },
       stopCropper: function() {
             if(this.active) {
                   this.$img.cropper('destroy');
