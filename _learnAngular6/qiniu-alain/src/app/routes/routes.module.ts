@@ -16,6 +16,7 @@ import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
 import { TestComponent } from './page/test/test.component';
 import { Test2Component } from './page/test2/test2.component';
+import { UpService } from '../services/up.service';
 
 
 
@@ -42,6 +43,7 @@ const COMPONENTS_NOROUNT = [];
     ...COMPONENTS,
     ...COMPONENTS_NOROUNT
   ],
+  providers: [UpService],  //服务
   entryComponents: COMPONENTS_NOROUNT
 })
 export class RoutesModule {}

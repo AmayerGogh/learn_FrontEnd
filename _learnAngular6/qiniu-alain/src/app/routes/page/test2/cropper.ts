@@ -41,7 +41,11 @@ export class CropperHelper{
             var data = $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("getCropBoxData")
             console.log(data)
       }
-
+      getCroppedCanvas():string{
+           var $imgData = $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("getCroppedCanvas")
+           return $imgData.toDataURL('image/png');
+      }
+     
       //没用
       setCroppedCanvas(){                       
             var data ={
@@ -52,7 +56,6 @@ export class CropperHelper{
                   }
             console.log(data) 
             $('#avatar-modal .avatar-wrapper .cropper-hidden').cropper("setCropBoxData",data)
-      
       }
 
 

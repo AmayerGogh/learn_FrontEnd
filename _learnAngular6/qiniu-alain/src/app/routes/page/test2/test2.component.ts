@@ -4,6 +4,7 @@ import { _HttpClient } from '@delon/theme';
 import { Config  } from "../../../core/config";
 
 import {CropperHelper} from './cropper'
+import { UpService } from '../../../services/up.service';
 @Component({
   selector: 'app-test2',
   templateUrl: './test2.component.html',
@@ -13,6 +14,9 @@ import {CropperHelper} from './cropper'
 export class Test2Component implements OnInit  {
   jQuery:any;
   crop: CropperHelper;
+  constructor(private upService:UpService){
+    
+  }
   ngOnInit(): void { 
      
 
@@ -39,5 +43,10 @@ export class Test2Component implements OnInit  {
   setCroppedCanvas(){
     this.crop.setCroppedCanvas();
   }
-  
+  upload(){
+     
+     var data = this.crop.getCroppedCanvas();
+     console.log(data) 
+     this.upService.upfile(data);
+  }
 }
