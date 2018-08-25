@@ -20,6 +20,7 @@ import { Exception500Component } from './exception/500.component';
 import { SysModule } from './sys/sys.module';
 import { TestComponent } from './page/test/test.component';
 import { Test2Component } from './page/test2/test2.component';
+import { uploadFileComponent } from './page/uploadFile/uploadFile.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘', titleI18n: 'dashboard' } },
       { path: 'test', component: TestComponent, data: { title: 'test', titleI18n: 'dashboard' } },
       { path: 'test2', component: Test2Component, data: { title: 'test2', titleI18n: 'dashboard' } },
+      { path: 'uploadFile', component: uploadFileComponent, data: { title: 'test3', titleI18n: 'dashboard' } },
       {
         path:'sys',
         loadChildren:'./sys/sys.module#SysModule'

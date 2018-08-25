@@ -14,6 +14,7 @@ import { UpService } from '../../../services/up.service';
 export class Test2Component implements OnInit  {
   jQuery:any;
   crop: CropperHelper;
+   url:string;
   constructor(private upService:UpService){
     
   }
@@ -43,10 +44,20 @@ export class Test2Component implements OnInit  {
   setCroppedCanvas(){
     this.crop.setCroppedCanvas();
   }
+
   upload(){
      
-     var data = this.crop.getCroppedCanvas();
-     console.log(data) 
-     this.upService.upfile(data);
+     var data = this.crop.getCroppedCanvas();   
+    //  var result =this.upService.upfile(data);
+    //  console.log(result);
+    //  if(result.code==200){
+    //    this.url =result.data[0];
+    //  }
+    this.upService.upfile(data).subscribe(data =>{
+        console.log(data);
+        if(data.code==200){
+          this.url =data.data[0];
+        }
+    })
   }
 }

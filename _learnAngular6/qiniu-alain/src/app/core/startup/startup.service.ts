@@ -88,24 +88,30 @@ export class StartupService {
         group: true,
         children: [
           {
-            text: '仪表盘',
+            text: '列表',
             link: '/dashboard',
             icon: 'anticon anticon-appstore-o'
           },
           {
-            text: 'sys',
+            text: 'qiniu-js',
             link: '/test',
             icon: 'anticon anticon-rocket',
             shortcut_root: true
           },
           {
-            text: 'sys',
+            text: '截图上传',
             link: '/test2',
             icon: 'anticon anticon-rocket',
             shortcut_root: true
           },
           {
-            text: 'sys',
+            text: '文件上传',
+            link: '/uploadFile',
+            icon: 'anticon anticon-rocket',
+            shortcut_root: true
+          },
+          {
+            text: '路由测试',
             link: '/sys/log',
             icon: 'anticon anticon-rocket',
             shortcut_root: true

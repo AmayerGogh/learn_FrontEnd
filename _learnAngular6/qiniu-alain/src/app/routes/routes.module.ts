@@ -17,6 +17,7 @@ import { Exception500Component } from './exception/500.component';
 import { TestComponent } from './page/test/test.component';
 import { Test2Component } from './page/test2/test2.component';
 import { UpService } from '../services/up.service';
+import { uploadFileComponent } from './page/uploadFile/uploadFile.component';
 
 
 
@@ -24,6 +25,7 @@ const COMPONENTS = [
   DashboardComponent,
   TestComponent,
   Test2Component,
+  uploadFileComponent,
   // passport pages
   UserLoginComponent,
   UserRegisterComponent,
