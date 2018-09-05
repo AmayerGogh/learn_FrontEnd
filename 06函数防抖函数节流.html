@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+      
+    </head>
+    <body>
+        <h1>原地址 https://juejin.im/post/5b8de829f265da43623c4261?utm_medium=fe&utm_source=weixinqun</h1>
+        <h1>input</h1><input type="text" id="txt1"> 
+        <h1>防抖后的input</h1><input type="text" id="txt2"> 
+
+        <h1>节流后的input</h1><input type="text" id="txt3"> 
+        <script>
+            //模拟一段ajax请求
+            function ajax(content) {
+            console.log('ajax request ' + content)
+            }
+           
+            document.getElementById('txt1').addEventListener('keyup', function (e) {
+                ajax(e.target.value)
+            })
+            
+            
+
+            function debounce(fun, delay) {
+                return function (args) {
+                    let that = this
+                    let _args = args
+                    clearTimeout(fun.id)
+                    fun.id = setTimeout(function () {
+                        fun.call(that, _args)
+                    }, delay)
+                }
+            }
+            let debounceAjax = debounce(ajax, 500)
+
+            document.getElementById('txt2').addEventListener('keyup', function (e) {
+                debounceAjax(e.target.value)
+            })
+            
+
+
+
+
+        function throttle(fun, delay) {
+            let last, deferTimer
+            return function (args) {
+                let that = this
+                let _args = arguments
+                let now = +new Date()
+                if (last && now < last + delay) {
+                    clearTimeout(deferTimer)
+                    deferTimer = setTimeout(function () {
+                        last = now
+                        fun.apply(that, _args)
+                    }, delay)
+                }else {
+                    last = now
+                    fun.apply(that,_args)
+                }
+            }
+        }
+
+        let throttleAjax = throttle(ajax, 1000)
+
+        let inputc = document.getElementById('txt3')
+        inputc.addEventListener('keyup', function(e) {
+            throttleAjax(e.target.value)
+        })
+
+
+        </script>
+    </body>
+</html>   
