@@ -6,8 +6,11 @@ enum State{
         中毒,
         束缚,
         限速,
+        技能前摇,
+        技能后摇,
         //增益
         霸体, 
+        
 }
 
 enum RoleState{
