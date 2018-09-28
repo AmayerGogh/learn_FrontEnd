@@ -17,7 +17,7 @@ interface  Role{ //这是父类
     move(angle:Number);
         
     jump(angle:Number);
-    skill(skill:Skill);
+    skill<T>(skill:string,param:T);
         
 }
 
@@ -36,13 +36,16 @@ class XiaKe implements Role{
     roleState: RoleState.生存;
     
     move(angle: Number) {
-        //throw new Error("Method not implemented.");
+        
     }
     jump(angle: Number) {
-        //throw new Error("Method not implemented.");
+        
     }
-    skill(skill: Skill) {
-        //throw new Error("Method not implemented.");
+    skill<T>(skill: string,param :T) {
+        //自身状态
+        if(skill="1"){
+            this.skill1.do(param);
+        }
     }
 
     skill1:skill1= new skill1();

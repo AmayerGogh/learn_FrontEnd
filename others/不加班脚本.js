@@ -122,3 +122,4 @@ function dos(){
     msg(101930);
     msg(105801);
 }
+dos()
