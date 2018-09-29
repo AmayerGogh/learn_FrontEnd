@@ -48,6 +48,6 @@ class XiaKe implements Role{
         }
     }
 
-    skill1:skill1= new skill1();
+    skill1:Skill1= new Skill1();
 
 }

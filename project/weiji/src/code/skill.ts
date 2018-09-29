@@ -1,15 +1,27 @@
 interface Skill{
-    //cd:number;//冷却
-    //前摇:number;
-    //后摇:number;
-    //do();
-    IsAlive:boolean
+    do<T>(自身角色:T);
+    isAlive:boolean
+    description:String;
+    current_step:number;
+    //条件
+
+    //自身状态
+     canGO:Boolean
+     //启用其他
+     canUserOther:Boolean;
+     steps:Array<SkillStepSingle>
 }
 
-class skill1 implements Skill{
-    IsAlive: boolean;
+
+
+
+
+
+class Skill1 implements Skill{
+    isAlive: boolean;
     
-    流程=[skillState.前摇,skillState.释放,skillState.cd,skillState.cd];
+    description:String;
+    
     //释放
     do<T>(自身角色:T) {
       
@@ -18,13 +30,37 @@ class skill1 implements Skill{
     }
 
     current_step:number;
+  
+
+    //自身状态
+    canGO:Boolean
+    //启用其他
+    canUserOther:Boolean
+
+    steps:Array<SkillStepSingle> = [];
+    stepsInit(){
+        this.steps[0] = new SkillStepSingle(skillState.前摇);
+        this.steps[0].SkillSelf.mp=-3;
+        this.steps[0].SkillSelf.distance=-3;
+        this.steps[0].SkillSelf.makeStatus(State.霸体,1)
+
+    }
     
 }
-
+//单步流程
 class SkillStepSingle{
-    damage:Number;
-    damageRandom:[0,0];
 
+    constructor(skillState:skillState){
+        this.skillState=skillState
+    }
+    // 范围
+
+   public skillState:skillState
+   public SkillSelf:SkillSelf
+   public SkillOther:SkillOther
+
+    //new出来的新对象
+   public  SkillNewRange:SkillNewRange
 }
 
 enum skillState{
@@ -34,3 +70,6 @@ enum skillState{
     后摇,
     cd,    
 }
+
+
+//demo
