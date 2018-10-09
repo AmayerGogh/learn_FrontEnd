@@ -1,7 +1,7 @@
 class Round{
 
-    A:Role     
-    B:Role
+  public  static A:Role     
+  public  B:Role
     Begin(){
         //Reflect.getPrototypeOf();
     }

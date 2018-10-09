@@ -122,4 +122,7 @@ function dos(){
     msg(101930);
     msg(105801);
 }
-dos()
+dos();
+function huazhong(){
+    msg(110717);msg(98263);msg(101550);msg(105311);msg(107551);msg(113139);msg(116317);
+}
