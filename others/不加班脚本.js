@@ -98,7 +98,7 @@ function new_table(){
         table_head_head +="<th>"+ele +"</th>"
     })
     table_head_head += "</tr></thead><tbody id='table1_body'></tbody></table></div>"
-    $("#tab_1").append(table_head_head)
+    $("body").append(table_head_head)
 }
 function msg(id){
     var info_array = dayscript(id);

@@ -1,7 +1,4 @@
-//技能传入对象
-class SkillDemand{
-    //角度
-}
+
 /// 目的是设置这些属性
 class Skill影响父类{
     distance:number = 10
@@ -31,7 +28,7 @@ class Skill影响父类{
 }
 
 //对自己的影响
-class SkillSelf extends Skill影响父类{
+class SkillReleaseSelf extends Skill影响父类{
 
 
    

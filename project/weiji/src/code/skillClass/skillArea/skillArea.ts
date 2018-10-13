@@ -1,15 +1,16 @@
-class skillArea{
+interface skillArea{
+    creater:any;
     hurt:number;
 
     初始位置:[0,0]
     角度:number;
-    角度容限:number;
+    角度追踪:number;
 
     范围:Array<AreaType>
     范围负:Array<AreaType>
 
     demageType:demageType;
-   
+    
     
 
 }

@@ -2,7 +2,7 @@
 
 
 
-class 极速斩 implements Skill{
+class 极速斩 implements SkillRelease{
     
     canUse() {
         //判断当前进行的技能
@@ -27,14 +27,15 @@ class 极速斩 implements Skill{
     //启用其他
     canUserOther:Boolean
 
-    steps:Array<SkillStepSingle> = [];
+    steps:Array<SkillReleaseStepSingle> = [];
     stepsInit(){
-        this.steps[0] = new SkillStepSingle(skillState.前摇);
-        this.steps[0].SkillSelf.mp=-3;
-        this.steps[0].SkillSelf.distance=-3;
-        this.steps[0].SkillSelf.makeStatus(State.霸体,1);
+        this.steps[0] = new SkillReleaseStepSingle(skillReleaseState.前摇);
+        this.steps[0].SkillReleaseSelf.mp=-3;
+        this.steps[0].SkillReleaseSelf.distance=-3;
+        this.steps[0].SkillReleaseSelf.makeStatus(State.霸体,1);
         //this.steps[0]
-
+        this.steps[0].skillReleaseState =skillReleaseState.前摇;
+        //this.steps[0].skillArea
     }
     
 }

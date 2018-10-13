@@ -1,4 +1,4 @@
-interface Skill{
+interface SkillRelease{
     do<T>(自身角色:T);
     //是否激活  
     isAlive:boolean
@@ -8,7 +8,7 @@ interface Skill{
     current_step:number;
    
     //全部步骤 
-    steps:Array<SkillStepSingle>
+    steps:Array<SkillReleaseStepSingle>
 
     //两个自身条件是否达到
     
