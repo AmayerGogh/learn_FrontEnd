@@ -12,4 +12,7 @@ class Round{
         //this.A_Step[0];
         //同步
     }
+
+    //skillArea list
+    //状态机
 }
