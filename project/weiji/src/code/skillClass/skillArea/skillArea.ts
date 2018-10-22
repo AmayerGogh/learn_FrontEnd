@@ -11,7 +11,8 @@ interface skillArea{
 
     demageType:demageType;
     
-    
+    //affect
+    //releasing
 
 }
 

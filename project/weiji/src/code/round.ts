@@ -12,31 +12,56 @@ class Round{
     
     
     r(){
-        this.currentStep++;
+        //当前回合事件
 
-        //this.A_Step[0];
-        //this.A_Step[0];
-        //同步
-    }
+        //场景技能影响后续
+        //ab移动 预测走位
+        this.do(); //ab同步技能
+        //场景影响
+        //ab收到的影响
+        //ab 位移 状态影响
+        //this.currentStep++;
+        //技能缓存
+        //同步ab状态 
+        //同步可用技能
+        }
 
     //skillArea list
     order:Array<string>;
     doA_completed:boolean
     dbB_completed:boolean
     do(){
-        if(this.order[0]=="a" && !this.doA_completed){
-            //doa
-            this.doA_completed = true;
+        this.order.forEach(element => {
+            if(element=="a"){
+                this.doA();
+            }else if(element=="b"){
+                this.dbB();
+            }
+       });
+    }
+    doA(){
+        //
+        this.doA_completed=true;
+    }
+    dbB(){
+        //
+        this.dbB_completed=true;
+    }
+    stepEvent(){
+        if(this.currentStep==0){
+            this.init();
         }
-        else{
-            this.do();
+        if(this.currentStep==100){
+            this.gameOver();
         }
-        if(this.order[0]=="b" && !this.dbB_completed){
-            //doa
-            this.dbB_completed = true;
-        }
-        else{
-            this.do();
-        }
+    }
+    /**
+      * 初始化    
+      */
+    init(){
+
+    }
+    gameOver(){
+        
     }
 }
