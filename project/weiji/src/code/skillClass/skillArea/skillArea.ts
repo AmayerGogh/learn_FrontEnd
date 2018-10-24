@@ -1,4 +1,4 @@
-import { JsonPipe } from "@angular/common";
+
 
 interface skillArea{
     creater:any;
@@ -12,11 +12,15 @@ interface skillArea{
     oneOrMore:oneOrMore;
 
      /**
-     * 范围
+     * 范围  包含回合
      */
-    shape:Array<Shape>
-
-     /**
+    shape:Array<SkillAreaShapeStepOne>
+    
+    /** 
+    * 总步骤数目
+    */ 
+    shapeStepTotal:number
+    /**
      * 角度
      */
     angle:number;
@@ -26,6 +30,8 @@ interface skillArea{
      * 覆盖类型
      */
     areaType:AreaType
+
+    
     //demageType:demageType;
     
     //affect
@@ -44,6 +50,9 @@ interface Shape{
     //距离起始位置角度
     startL,
     
+}
+class SkillAreaShapeStepOne{
+   public shapeOne:Array<Shape>
 }
 
 
