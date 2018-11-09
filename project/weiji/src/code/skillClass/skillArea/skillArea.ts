@@ -2,8 +2,7 @@
 
 interface skillArea{
     creater:any;
-    //hurt:number;
-
+    
 
      /**
      * 触发起始位置 
@@ -31,9 +30,6 @@ interface skillArea{
      */
     areaType:AreaType
 
-    
-    //demageType:demageType;
-    
     //affect
     //releasing
 

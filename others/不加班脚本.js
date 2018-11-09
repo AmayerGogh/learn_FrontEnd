@@ -10,7 +10,15 @@ var template2 =["0-10","10-20","20-30","30-40","40-60","60+"]
 
 function dayscript(id){
     var info_array =[]; //push
-    info_array[0] =id
+    info_array[0]= id;
+    var channelMsg = $.ajax({
+        type: "GET",
+        url: "http://cqa.91bihu.com/chart/GetAgentAllName?id="+id,                        
+        async: false
+     }).responseText;
+    info_array[0]+=channelMsg;
+   
+    
     var quote_html = $.ajax({
                    type: "GET",
                    url: "http://cqa.91bihu.com/chart/index2?salesregions=&province=&city=&agentId="+id+"&searchType=quick&source=%E5%B9%B3%E5%AE%89&excludeAssignSpErr=true&quick_time=1&quick_time_c=-1",                        
@@ -19,10 +27,11 @@ function dayscript(id){
     
     var reg = /\}\)\(\{[\S|\s]+?\]\}\}\)/g;
     var jsonstr= quote_html.match(reg)[0].substring(48)
-    console.log(jsonstr)
+   
     jsonstr=jsonstr.substring(0,jsonstr.indexOf(")")-1);
     var obj=JSON.parse(jsonstr);
     console.log(obj)
+   
     if(obj.success.length==0){
         console.log("报价：今日报价为0")
     }
@@ -41,11 +50,12 @@ function dayscript(id){
                     print= parseFloat(obj.elapsedTime[index].Value/num*100).toFixed(2);                    
                 }               
             })
+            
             if(print!=0){
                 print =print +"%"
             }
             info_array[i+2] =print
-            console.log(template[i] +"--->" +print)
+            //console.log(template[i] +"--->" +print)
         }
     }
 
@@ -79,7 +89,7 @@ function dayscript(id){
                 print =print +"%"
             }
             info_array[i+10] =print
-            console.log(template2[i] +"--->" +print)
+            //console.log(template2[i] +"--->" +print)
         }
 
     }
@@ -104,7 +114,7 @@ function msg(id){
     var info_array = dayscript(id);
     var table_row ="<tr>";
     $.each(info_array,function(index,ele){
-        console.log(ele);
+       
         table_row +="<td>"+ele +"</td>"
     })
     table_row +="</tr>"
@@ -116,8 +126,8 @@ function msg(id){
 
 function dos(){
     msg(98263);
-    msg(97229);
-    msg(11753);
+    msg(9110);
+    msg(4066);
     msg(79504);
     msg(101930);
     msg(105801);
@@ -125,4 +135,19 @@ function dos(){
 dos();
 function huazhong(){
     msg(110717);msg(98263);msg(101550);msg(105311);msg(107551);msg(113139);msg(116317);
+}
+function beijing(){
+msg(102826);
+    msg(103213);
+        msg(105572);
+            msg(128153);
+                msg(131531);
+                    msg(138209);
+                        msg(85135);
+                            msg(89227);
+                                msg(97229);
+                                    msg(100784);
+                                        msg(102126);
+                                            msg(115857);
+
 }
