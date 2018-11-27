@@ -3,9 +3,9 @@
 
 var template_head =["渠道名称"]
 var template_bao_head =["报价"]
-var template =["0-15","15-20","20-30","30-40","40-50","50-60","60+"]
+var template =["0-10","10-20","20-30","30-40","40-50","50-60","60+"]
 var template_xu_head =["续保"]
-var template2 =["0-10","10-20","20-30","30-40","40-60","60+"]
+var template2 =["0-5","5-10","10-15","15-20","20-30","30-40"]
 
 
 function dayscript(id){
@@ -18,7 +18,7 @@ function dayscript(id){
      }).responseText;
     info_array[0]+=channelMsg;
    
-    
+    //昨日的 quick_time 改为2
     var quote_html = $.ajax({
                    type: "GET",
                    url: "http://cqa.91bihu.com/chart/index2?salesregions=&province=&city=&agentId="+id+"&searchType=quick&source=%E5%B9%B3%E5%AE%89&excludeAssignSpErr=true&quick_time=1&quick_time_c=-1",                        
@@ -137,17 +137,20 @@ function huazhong(){
     msg(110717);msg(98263);msg(101550);msg(105311);msg(107551);msg(113139);msg(116317);
 }
 function beijing(){
-msg(102826);
+    msg(102826);
     msg(103213);
-        msg(105572);
-            msg(128153);
-                msg(131531);
-                    msg(138209);
-                        msg(85135);
-                            msg(89227);
-                                msg(97229);
-                                    msg(100784);
-                                        msg(102126);
-                                            msg(115857);
+    msg(105572);
+    msg(128153);
+    msg(131531);
+    msg(138209);
+    msg(85135);
+    msg(89227);
+    msg(97229);
+    msg(100784);
+    msg(102126);
+    msg(115857);
+    msg(11753);
+    msg(12054);
+
 
 }
