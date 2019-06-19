@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <script src="../js/jquery-2.0.3.js"></script>
+    <!-- <script src="../js/vue1.0.25.js"></script> -->
+    <script src="../js/vue.2.6.10.js"></script>
+    <script>
+
+        $(function () {
+            var app = new Vue({
+                el: "#app1",
+                data: {
+                    message: "1数据绑定",
+                    checkedNames: [],
+                    picked: '',
+                    selected: '',
+                    selected2: 'A',
+                    options2: [
+                        { text: 'One', value: 'A' },
+                        { text: 'Two', value: 'B' },
+                        { text: 'Three', value: 'C' }
+                    ]
+                },
+                mounted: function () { //用来初始化
+                    //this.Loading(); //这样直接调用 不能保障，官方推荐下面的方式
+                    this.$nextTick(function () {
+                        this.Loading();
+                    })
+                },
+                methods: {
+                    Loading: function () {
+                        this.title2 = "动态加载的数据";
+                    }
+                }
+
+            });
+
+        });
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="app1">
+        <h1>文本</h1>
+        <input type="text" v-model="message">
+        <p>message is {{message}}</p>
+        <h1>多行文本</h1>
+        <p style="white-space: pre-line;">{{ message }}</p>
+        <br>
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        <h1>复选框</h1>
+        <div id='example-3'>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+        <h1>单选框</h1>
+        <div id="example-4">
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+        <h1>下拉框</h1>
+        <div id="example-5">
+            <select v-model="selected">
+                <option disabled value="">请选择</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <h1>下拉框绑定数组</h1>
+        <div id="example-6">
+            <select v-model="selected2">
+                <option v-for="option in options2" v-bind:value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <span>Selected: {{ selected2 }}</span>
+        </div>
+    </div>
+
+</body>
+
+</html>
