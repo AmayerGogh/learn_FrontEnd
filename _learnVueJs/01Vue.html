@@ -1,68 +1,172 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-     <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	 <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script> 
-     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-     <script>     
-     
-     $(function(){
-     	
-     	var app =new Vue({
-     		el:"#app1",
-     		data:{
-     			title:"1数据绑定",
-     			title2:""
-     		},
-     		mounted:function(){ //用来初始化
-     			//this.Loading(); //这样直接调用 不能保障，官方推荐下面的方式
-     			this.$nextTick(function(){
-     				  this.Loading();   				
-     			})
-     		},
-     		methods:{
-     			Loading:function(){     				
-     			this.title2 ="动态加载的数据";
-     			}
-     		}
-     		
-     	});
-     	new Vue({
-     		el:"#app2",
-     		data:{
-     			title:"2 v-for命令的使用",
-     		},
-     		mounted:function(){
-     			
-     		},
-     		methods:{
-     			
-     		}
-     		
-     	})
-     	//用来创建全局过滤器
-     	Vue.filter();
-     	
-     	
-     });
-     	
-     	
-    
-     </script>
-	</head>
-	<body>
-		<div id="app1">			
-			<h1>{{title}}</h1>
-		     loading加载
-			<h2>{{title2}}</h2>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<script src="../js/jquery-2.0.3.js"></script>
+	<script src="../js/vue1.0.25.js"></script>
+	<script>
+
+		$(function () {
+
+			var app = new Vue({
+				el: "#app1",
+				data: {
+					title: "1数据绑定",
+					title2: "2test"
+				},
+				mounted: function () { //用来初始化
+					//this.Loading(); //这样直接调用 不能保障，官方推荐下面的方式
+					this.$nextTick(function () {
+						this.Loading();
+					})
+				},
+				methods: {
+					Loading: function () {
+						this.title2 = "动态加载的数据";
+					}
+				}
+
+			});
+			new Vue({
+				el: "#app2",
+				data: {
+					title: "2",
+					message: '页面加载于 ' + new Date().toLocaleString()
+				},
+				mounted: function () {
+
+				},
+				methods: {
+
+				}
+
+			})
+			var app3 = new Vue({
+				el: '#app-3',
+				data: {
+					seen: true,
+					todos: [
+						{ text: '学习 JavaScript' },
+						{ text: '学习 Vue' },
+						{ text: '整个牛项目' }
+					]
+				}
+			})
+
+			Vue.component('todo-item', {
+				// todo-item 组件现在接受一个
+				// "prop"，类似于一个自定义特性。
+				// 这个 prop 名为 todo。
+				props: ['todo'],
+				template: '<li>{{ todo.text }}</li>'
+			})
+			var app7 = new Vue({
+				el: '#app-7',
+				data: {
+					groceryList: [
+						{ id: 0, text: '蔬菜' },
+						{ id: 1, text: '奶酪' },
+						{ id: 2, text: '随便其它什么人吃的东西' }
+					]
+				}
+			})
+			var vm = new Vue({
+				el: '#app8',
+				data: {
+					message: 'Hello'
+				},
+				computed: {
+					// 计算属性的 getter
+					reversedMessage: function () {
+						// `this` 指向 vm 实例
+						return this.message.split('').reverse().join('')
+					}
+				}
+			})
+
+			var vm = new Vue({
+				el: '#app9',
+				data: {
+					firstName: 'Foo',
+					lastName: 'Bar'
+				},
+				computed: {
+					fullName: {
+						// getter
+						get: function () {
+							return this.firstName + ' ' + this.lastName
+						},
+						// setter
+						set: function (newValue) {
+							var names = newValue.split(' ')
+							this.firstName = names[0]
+							this.lastName = names[names.length - 1]
+						}
+					}
+				}
+			})
+			//用来创建全局过滤器
+			Vue.filter();
+
+
+		});
+
+
+
+	</script>
+</head>
+
+<body>
+	<div id="app1">
+		<h1>{{title}}</h1>
+		loading加载
+		<h2>{{title2}}</h2>
+	</div>
+
+
+
+	<div id="app2">
+		<span v-bind:title="message">鼠标在这里悬停</span>
+		<h1>{{title}}</h1>
+	</div>
+
+	<div id="app-3">
+		<h1>if for</h1>
+		<p v-if="seen">现在你看到我了</p>
+		<ol>
+			<li v-for="todo in todos">
+				{{ todo.text }}
+			</li>
+		</ol>
+	</div>
+	<div id="app-7">
+		<h1>组件化</h1>
+		<ol>
+			<!--
+				现在我们为每个 todo-item 提供 todo 对象
+				todo 对象是变量，即其内容可以是动态的。
+				我们也需要为每个组件提供一个“key”，稍后再
+				作详细解释。
+			  -->
+			<todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+		</ol>
+	</div>
+
+	<div>
+		<div id="app8">
+			<h1>计算属性</h1>
+			<p>Original message: "{{ message }}"</p>
+			<p>Computed reversed message: "{{ reversedMessage }}"</p>
 		</div>
-		
-		
-		
-		<div id="app2">
-		<h1>{{title}}</h1>	
-		</div>
-	</body>
+	</div>
+	<div id="app9">
+		<h1>计算属性2</h1>
+		fullName:{{fullName}}
+
+	</div>
+</body>
+
 </html>
