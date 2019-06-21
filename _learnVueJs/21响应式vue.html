@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head></head>
+
+<body>
+  <div id="app">
+    <input type="text" id="a" v-model="text"> <!-- v-model指令实现文本输入与应用状态之间的双向绑定 -->
+    {{text}}
+    <!--data中的某个属性名-->
+  </div>
+
+
+  　
+  <script type="text/javascript">
+
+
+    function Compile(node, vm) { //node---DOM中的某个节点，vm---用Vue()实例化的对象
+      if (node) {//判断该节点是否存在，存在则将节点转换成文档碎片
+        this.$frag = this.nodeToFragment(node, vm);
+        return this.$frag;//返回文档碎片
+      }
+    }
+
+
+    Compile.prototype = {
+      nodeToFragment: function (node, vm) {//将node节点的所有的子节点都转换成fragment
+        var self = this;
+        var frag = document.createDocumentFragment();
+        var child;
+
+        while (child = node.firstChild) {
+          self.compileElement(child, vm);
+          frag.append(child); //  // 将所有子节点添加到fragment中，child是指向元素首个子节点的引用。将child引用指向的对象append到父对象的末尾，原来child引用的对象就跳到了frag对象的末尾，而child就指向了本来是排在第二个的元素对象。如此循环下去，链接就逐个往后跳了
+        }
+        return frag;
+      },
+      compileElement: function (node, vm) {//分析节点的类型，并处理节点中相应的变量的值
+        var reg = /\{\{(.*)\}\}/;//.匹配除了\b之外的任何单个字符，*表示0或多个，形如{{d}}
+
+        //节点类型为元素
+        if (node.nodeType === 1) {
+          var attr = node.attributes;
+          // 解析属性
+          for (var i = 0; i < attr.length; i++) {
+            if (attr[i].nodeName == 'v-model') {
+              var name = attr[i].nodeValue; // 获取v-model绑定的属性名
+              node.addEventListener('input', function (e) {
+                // 给相应的data属性赋值，进而触发该属性的set方法
+                vm.data[name] = e.target.value;
+              });
+              node.value = vm.data[name]; // 将data的值赋给该node
+              node.removeAttribute('v-model');
+            }
+          }
+        }
+        //节点类型为text
+        if (node.nodeType === 3) {
+          if (reg.test(node.nodeValue)) {// 获取v-model绑定的属性名
+            var name = RegExp.$1; // 获取匹配到的字符串
+            name = name.trim();
+            node.nodeValue = vm.data[name]; // 将data的值赋给该node
+            // new Watcher(vm, node, name);
+          }
+        }
+      },
+    }
+
+
+    // 实例化对象的构造函数
+    function Vue(options) {
+      this.data = options.data;
+      var data = this.data;   //vue实例对象的data对象属性
+      var id = options.el;   //挂载元素的id
+      var dom = new Compile(document.getElementById(id), this);
+      // 编译完成后，将dom返回到app中
+      document.getElementById(id).appendChild(dom);
+    }
+
+
+    var vm = new Vue({ //利用构造函数Vue()，实例化一个对象vm
+      el: 'app',     //el---挂载元素，app---表示DOM中的某个节点的id
+      data: {        //data---进行交互的数据
+        text: 'hello world'  //属性text名与v-model绑定的属性名一样
+      }
+    });
+  </script>
+</body>
+
+</html>
