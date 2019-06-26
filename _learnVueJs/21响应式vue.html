@@ -46,8 +46,19 @@
         })
       },
       compile() {
+        //解析dom试图中的双括号之间的内容
         let ele = document.querySelector(this.el);
-        [].slice.call(ele.childNodes).forEach(node => {
+
+        var fragment =document.createDocumentFragment();
+        var child =ele.firstChild;
+        while(child){
+          // 将Dom元素移入fragment中
+          // appendChild: 如果被插入的节点已经存在于当前文档的文档树中,
+          // 则那个节点会首先从原先的位置移除,然后再插入到新的位置.
+          fragment.appendChild(child);
+          child =ele.firstChild
+        }
+        [].slice.call(fragment.childNodes).forEach(node => {
           let reg = /\{\{(.*)\}\}/,
             text = node.textContent;
           if (reg.test(text)) {
@@ -60,6 +71,7 @@
             node.textContent = newVal;
           }
         })
+        ele.appendChild(fragment);
       },
        // 其他方法不变，添加一个代理方法，将data里的属性定义到this上，即Vue的实例中
       proxyKeys(key){
@@ -78,6 +90,14 @@
           })
       }
     }
+
+    function Observer(data){
+      this.walk(data);
+    }
+    Observer.prototype={
+      
+    }
+
 
     //https://www.xiabingbao.com/post/vue/vue-two-binding.html
     let ww = new Vue({

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+		integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+	<div id="app1">
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button class="btn btn-primary">你好</button>
+	</div>
+	<script src="../js/vue.2.6.10.js"></script>
+	<script>
+		// 定义一个名为 button-counter 的新组件
+		Vue.component('button-counter', {
+			data: function () {
+				return {
+					count: 0
+				}
+			},
+			template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+		})
+		new Vue({
+			el: "#app1"
+		})
+
+
+	</script>
+
+	<div id="app2">
+		<h1>局部组件</h1>
+		<com-a></com-a>
+
+	</div>
+	<template id="ttComponent">
+		<div>
+				<table class="table">
+						<tr>
+							<th colspan="2" style="background-color:aquamarine">
+								子组件数据
+							</th>
+						</tr>
+					</table>
+					<com-b></com-b>
+		</div>
+		
+	</template>
+	<script>
+
+		var component_inner = {		
+			template: '<button>组件内组件</button>'
+		};
+	
+		new Vue({
+			el: '#app2',
+			data: {
+
+			},
+			components: {
+				'com-a': {
+					template: '#ttComponent',
+					components:{
+						'com-b':component_inner
+					}
+				}
+			}
+		})
+
+	</script>
+
+</body>
+
+
+</html>

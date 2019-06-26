@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+		integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+	<div id="app1">
+		<base-checkbox v-model="lovingVue"></base-checkbox>
+	</div>
+	<script src="../js/vue.2.6.10.js"></script>
+
+	<script>
+		// 定义一个名为 button-counter 的新组件
+		Vue.component('base-checkbox', {
+			model: {
+				prop: 'checked',
+				event: 'change'
+			},
+			props: {
+				checked: Boolean
+			},
+			template: `
+			<input
+			type="checkbox"
+			v-bind:checked="checked"
+			v-on:change="$emit('change', $event.target.checked)"
+			>
+		`
+		})
+		new Vue({
+			el: "#app1",
+			data:{
+				lovingVue:true
+			}
+		})
+
+
+	</script>
+
+
+
+</body>
+
+
+</html>

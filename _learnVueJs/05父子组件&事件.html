@@ -81,7 +81,7 @@
             <table-component v-bind:so-name=name v-bind:my-age=age></table-component>
             <table-component v-bind:so-name="name" v-bind:my-age="age"></table-component>
 
-            <blog-post v-for="post in posts" v-bind:post="post"></blog-post>
+            <blog-post0 v-for="post in posts" v-bind:post="post"></blog-post0>
         </div>
         <div></div>
     </div>
@@ -103,16 +103,27 @@
                 <td>{{ myAge }}</td>
                 <td><input type="text" v-model="myAge" /></td>
             </tr>
+            <tr>
+                    <td>my age 重新赋值</td>
+                    <td>{{myAge2}}</td>
+                    <td></td>
+                </tr>
         </table>
     </template>
     <script>
         Vue.component('table-component', {
             template: '#ttComponent',
-            props: ['soName', 'myAge']
+            props: ['soName', 'myAge'],
+            //入参修改
+            computed:{
+                myAge2:function(){
+                    return this.myAge+=1
+                }
+            }
         })
-        Vue.component('blog-post', {
+        Vue.component('blog-post0', {
             props: ['post'],
-            template: '<h3>{{ post.title }}</h3>'
+            template: '<h3>{{ post.title }}</h3>',          
         })
         new Vue({
             el: '#app3',
@@ -128,6 +139,14 @@
         })
 
     </script>
+
+
+
+
+
+
+    <div style="border-bottom:1px solid red;margin-top:100px;">
+    </div>
     <div id="app4">
         <h1>子组件事件</h1>
         <div :style="{ fontSize: postFontSize + 'em' }">
@@ -184,6 +203,9 @@
         })
 
     </script>
+
+
+
     <div id="app5">
         <h1>自定义input v-model</h1>
         <custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input>
@@ -200,7 +222,9 @@
         })
         new Vue({
             el: '#app5',
-           
+            data:{
+                searchText:"test"
+            }
         })
     </script>
 </body>
