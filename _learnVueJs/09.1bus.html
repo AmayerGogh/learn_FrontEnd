@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/vue.2.6.10.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        
+        <child-a></child-a>
+        <child-a></child-a>
+    </div>
+</body>
+
+<script>
+    // 1. 给Vue的原型添加一个bus，bus是一个Vue实例
+    Vue.prototype.bus = new Vue()
+    Vue.component('child-a', {
+        data: function () {
+            return {
+                content: 0
+            }
+        },
+        methods: {
+            // 2.定义一个函数，能够在数据发生变化时调用emit(这里定义一个点击事件的响应函数)
+            handleClick: function () {
+                this.content += 1
+                this.bus.$emit('change', this.content)
+            }
+        },
+        mounted: function () {
+            var this_ = this // 这里要有一个这样的赋值，下面不能直接使用this，因为在函数中this指向的已经不是当前对象了，而用_this保存的才是当前对象  非箭头函数内部得用this_
+            // 3. 在组件中对bus中触发的事件进行监听。（当emit触发事件时会调用）
+            this.bus.$on('change', msg => { // 4.函数中的参数是emit触发事件带的参数。
+                this.content = msg  // 5.修改当前组件中的数据
+            })
+        },
+        template: `<div @click='handleClick'>{{ content }}</div>`
+    });
+    var app = new Vue({
+        el: '#app'
+    })
+</script>
+
+
+</html>

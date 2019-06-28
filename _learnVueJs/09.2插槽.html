@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/vue.2.6.10.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child>
+            <template slot='header'>
+                头部
+            </template>
+            <template slot='footer'>
+                底部
+            </template>
+            <template>
+                heh
+            </template>
+
+        </child>
+    </div>
+    <template id="childa">
+        <div>
+            顶部的内容: <slot name='header'></slot>
+            底部的内容: <slot name='footer'></slot>
+            <!-- 没有名字的插槽 -->
+            其他的内容: <slot></slot>
+
+            <tr></tr>
+
+        </div>
+    </template>
+    <script>
+        Vue.component('child', {
+            template: '#childa'
+        })
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+
+
+    <div id="app2">
+        <child-a>
+            <template slot-scope='props'>
+                <!--2. slot-scope的属性值是可以随意的，代表作用域插槽的名字 -->
+                <h3>{{props.index}}</h3>
+                <!--3. props.xxx 是传过来的值的名字，值需要绑定到slot中 -->
+            </template>
+        </child-a>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue()
+        Vue.component('child-a', {
+            data: function () {
+                return {
+                    list: [2, 4, 6, 8, 10]
+                }
+            },
+            // 1. 绑定属性，名为index,那么作用域插槽就可以获取名为index的数据
+            template: `<div>
+                            <slot v-for='item of list' :index=item></slot>
+                        </div>`
+        });
+        var app = new Vue({
+            el: '#app2'
+        })
+    </script>
+</body>
+
+
+
+
+</html>

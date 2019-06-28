@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/vue.2.6.10.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div ref='demo'>1</div> <!-- 1. 设置ref -->
+        <button @click='changeColor'>+1</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            methods: {
+                changeColor: function () {
+                    console.log(this.$refs.demo.innerText) // 获取ref对象，有了dom对象你就可以进行dom操作了。
+                    this.$refs.demo.style = 'color:red'
+                    this.$refs.demo.innerText += this.$refs.demo.innerText
+                }
+            }
+        })
+        //toto
+        //https://www.cnblogs.com/progor/p/10331531.html
+    </script>
+</body>
+
+
+
+</html>

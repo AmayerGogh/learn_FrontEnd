@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/vue.2.6.10.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>keepalive</h1>
+        <button @click='changeLogin'>切换登录方式</button>
+        <keep-alive>
+            <component :is='loginType'></component>
+        </keep-alive>
+
+    </div>
+    <script>
+        Vue.component('userInfoLogin', {
+            template: `
+                    <div>
+                        <div>用户名登陆:<input type="text"></div>
+                        <div>请输入密码:<input type="password"></div>
+                    </div>
+                    `
+        });
+        Vue.component('phoneLogin', {
+            template: `
+                    <div>
+                        <div>请输入手机号:<input type="text"></div>
+                        <div>请输入验证码:<input type="text"></div>
+                    </div>
+                    `
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                loginType: 'userInfoLogin'
+            },
+            methods: {
+                changeLogin: function () {
+                    this.loginType = this.loginType === 'userInfoLogin' ? 'phoneLogin' : 'userInfoLogin';
+                }
+            }
+        })
+    </script>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">		
+	<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/vue.2.6.10.js"></script>
+</head>
+
+<body>
+	<div id="app">
+        <div>{{bar}}</div>
+        <my-comp :foo.sync="bar"></my-comp>
+        <!-- <my-comp :foo="bar" @update:foo="val => bar = val"></my-comp> -->
+    </div>
+    <script>
+        Vue.component('my-comp', {
+            template: '<div @click="increment">点我+1</div>',
+            data: function() {
+                return {copyFoo: this.foo}
+            },
+            props: ['foo'],
+            methods: {
+                increment: function() {
+                    this.$emit('update:foo', ++this.copyFoo);
+                }
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {bar: 0}
+        });
+    </script>
+
+
+
+        <!--子父数据传输-->
+        <div id="app3">
+            <h1>父子组件</h1>
+            <div class="container">
+                <table class="table">
+                    <tr>
+                        <th colspan="3">父组件数据</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>{{ name }}</td>
+                        <td><input type="text" v-model="name" /></td>
+                    </tr>
+                    <tr>
+                        <td>age</td>
+                        <td>{{ age }}</td>
+                        <td><input type="text" v-model="age" /></td>
+                    </tr>
+                </table>
+                <!--//v-bind:so-name=name.sync="name" 原来的写法-->
+                <table-component :so-name.sync=name :my-age=age></table-component>               
+            </div>
+            <div></div>
+        </div>
+    
+        <template id="ttComponent">
+            <table class="table">
+                <tr>
+                    <th colspan="2" style="background-color:aquamarine">
+                        子组件数据
+                    </th>
+                </tr>
+                <tr>
+                    <td>my name</td>
+                    <td>{{ soName }}</td>
+                    <td><input type="text" v-model="soName" /></td>
+                </tr>
+                <tr>
+                    <td>my age</td>
+                    <td>{{ myAge }}</td>
+                    <td><input type="text" v-model="myAge" /></td>
+                </tr>
+                <tr>
+                        <td>my age 重新赋值</td>
+                        <td>{{myAge2}}</td>
+                        <td><button class="btn-md-info" @click="increment">回传到父类</button></td>
+                    </tr>
+            </table>
+        </template>
+        <script>
+            Vue.component('table-component', {
+                template: '#ttComponent',
+                props: ['soName', 'myAge'],
+                //入参修改
+                computed:{
+                    myAge2:function(){
+                        return this.myAge +1
+                    },
+                    soname2:function(){
+                        return this.soName;
+                    }
+                },
+                methods:{
+                    increment:function(){
+                        this.$emit('update:soName', this.soName);
+                    }
+                }
+            })
+          
+            new Vue({
+                el: '#app3',
+                data: {
+                    name: 'keep',
+                    age: 25,                   
+                }
+            })
+    
+        </script>
+
+
+</body>
+
+
+</html>
