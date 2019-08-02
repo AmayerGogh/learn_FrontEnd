@@ -10,7 +10,7 @@
       <router-link :to="{path:'/article',query:{}}">嵌套路由</router-link>
       <router-link to="/duoshitu">路由用bview</router-link>
       <router-link to="/bieming">路由别名(未完成)</router-link>
-      <router-link to="/bieming">路由传参正确的方法</router-link>
+      <router-link to="/zujianchuanchan">路由传参正确的方法</router-link>
     </div>
     <h3>frame</h3>
     <div class="router-out">

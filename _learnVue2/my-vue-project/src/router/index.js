@@ -7,7 +7,10 @@ import article from "../components/Article/Article"
 import articleDetail from '../components/Article/articleDetail'
 Vue.use(Router)
 
-export default new Router({
+
+
+
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -26,20 +29,39 @@ export default new Router({
       component: article,
       children: [
         {
-          path: 'detail', 
+          path: 'detail',
           component: articleDetail
-        },       
+        },
         {
-          path:'',
-          component:articleDetail
+          path: '',
+          component: articleDetail
         }
       ]
-    },{
-      path:'/duoshitu',
-      components:{
-        default:Test,
-        b:Test
+    }, {
+      path: '/duoshitu',
+      components: {
+        default: Test,
+        b: Test
+      }
+    }, {
+      path: '/zujianchuanchan',
+      component: Test,
+      props:{p:'fale'},
+      //路由守卫
+      beforeEnter:(to,from,next)=>{
+
       }
     }
   ]
 })
+// 即将进入目标的路由对象
+//要离开的路由
+// //
+// router.beforeEach((to,from,next)=>{
+
+// })
+// router.afterEach((to,from)=>{
+
+// })
+
+export default router;
