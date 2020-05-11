@@ -36,19 +36,25 @@
 
 			////显示精灵
 			//舞台stage
+			var cat;
 			PIXI.loader
 			  .add(["images/cat.png"])
-			  .on("pregress",loadProgressHandler)
+			  .on("progress",loadProgressHandler)
 			  .load(setup);
 			function setup() {
-			  let cat = new PIXI.Sprite(
+			    cat = new PIXI.Sprite(
 			    PIXI.loader.resources["images/cat.png"].texture
 			  );
 			  app.stage.addChild(cat)
 			}
-			function loadProgressHandler() {
-			  console.log("loading");
+			function loadProgressHandler(loader, resource) {
+			   //Display the file `url` currently being loaded
+				console.log("loading: " + resource.url);
+
+				//Display the percentage of files currently loaded
+				console.log("progress: " + loader.progress + "%");
 			}
+			
 		</script>
 	</body>
 </html>

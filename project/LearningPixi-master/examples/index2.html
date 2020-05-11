@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv=X-UA-Compatible content="IE=edge">
+		<title>game</title>
+	</head>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	<!-- <script src="pixi.js"></script>		 -->
+	<script src="https://pixijs.download/v4.5.5/pixi.js"></script>		
+	<body>
+		
+		<script>
+
+           var TextureCache =PIXI.utils.TextureCache;
+           var resources= PIXI.loader.resources;
+
+			let type ="WebGL"
+			if(!PIXI.utils.isWebGLSupported()){
+
+				type = "canvas"
+			}
+    		PIXI.utils.sayHello(type)
+
+    		let app = new PIXI.Application({
+    			width: 800, 
+    			height: 600,    			    			
+    		});
+			
+			app.renderer.view.style.position = "absolute";
+			app.renderer.view.style.display = "block";
+			app.renderer.autoResize = true;
+			app.renderer.resize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(app.view);
+			
+			var cat;
+			PIXI.loader
+                .add("images/tileset.png")
+                .load(setup);
+			function setup() {
+                //加载图片
+                //     cat = new PIXI.Sprite(
+                //     PIXI.loader.resources["images/cat.png"].texture
+                // );
+
+                // app.stage.addChild(cat)
+
+                //雪碧图     
+                let texture = TextureCache["images/tileset.png"];                
+                let rectangle = new PIXI.Rectangle(192, 128, 64, 64);                
+                texture.frame = rectangle;
+                //Create the sprite from the texture
+                let rocket = new PIXI.Sprite(texture);
+                //Position the rocket sprite on the canvas
+                rocket.x = 32;
+                rocket.y = 32;
+                //Add the rocket to the stage
+                app.stage.addChild(rocket);
+
+                
+			}
+			function loadProgressHandler(loader, resource) {
+			   //Display the file `url` currently being loaded
+				console.log("loading: " + resource.url);
+
+				//Display the percentage of files currently loaded
+				console.log("progress: " + loader.progress + "%");
+			}
+			
+		</script>
+	</body>
+</html>
