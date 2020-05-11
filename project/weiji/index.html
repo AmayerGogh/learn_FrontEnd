@@ -33,6 +33,22 @@
 			app.renderer.autoResize = true;
 			app.renderer.resize(window.innerWidth, window.innerHeight);
 			document.body.appendChild(app.view);
+
+			////显示精灵
+			//舞台stage
+			PIXI.loader
+			  .add(["images/cat.png"])
+			  .on("pregress",loadProgressHandler)
+			  .load(setup);
+			function setup() {
+			  let cat = new PIXI.Sprite(
+			    PIXI.loader.resources["images/cat.png"].texture
+			  );
+			  app.stage.addChild(cat)
+			}
+			function loadProgressHandler() {
+			  console.log("loading");
+			}
 		</script>
 	</body>
 </html>
