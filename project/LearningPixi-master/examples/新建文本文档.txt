@@ -1,1 +1,2 @@
 https://github.com/Zainking/learningPixi
+https://gitee.com/Amayer/learningPixi

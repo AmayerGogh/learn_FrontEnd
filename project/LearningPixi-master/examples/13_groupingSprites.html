@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <title>Grouping sprites</title>
 <body>
-<script src="../pixi/pixi.min.js"></script>
+<script src="https://pixijs.download/v4.5.5/pixi.js"></script>		
 <script>
 
 //Aliases
@@ -53,6 +53,7 @@ function setup() {
   let tiger = new Sprite(id["tiger.png"]);
   tiger.position.set(64, 64);
 
+  //是个容器
   //Group the animals
   let animals = new Container();
   animals.addChild(cat);
@@ -63,7 +64,7 @@ function setup() {
   app.stage.addChild(animals);
 
   //Change the position of the group
-  animals.position.set(64, 64);
+  animals.position.set(0, 64);
 
   //Optionally change the group's width and height
   //animals.width = 200;
