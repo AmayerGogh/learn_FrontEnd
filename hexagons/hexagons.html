@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="hexagons.css">
+    <style>
+   
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul id="hexGrid">
+        <li class="hex" v-for="item in list">
+          <div class="hexIn">
+            <div class="hexLink">
+               <img src="https://farm9.staticflickr.com/8461/8048823381_0fbc2d8efb.jpg" alt="" />
+              <h1>666</h1>             
+            </div>
+          </div>
+        </li>    
+      </ul>  
+    </div>
+    
+  </body>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        list: new Array(18*10)
+      }
+    })
+  </script>
+</html>
