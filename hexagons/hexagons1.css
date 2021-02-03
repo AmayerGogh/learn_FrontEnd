@@ -17,7 +17,6 @@
 
 .hex {
 position: relative;
-visibility:hidden;
 outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
 }
 .hex::after{
@@ -31,7 +30,6 @@ width:96%;
 padding-bottom: 110.851%; /* =  width / sin(60) */
 margin:0 2%;
 overflow: hidden;
-visibility: hidden;
 outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
 -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
     -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
@@ -39,7 +37,6 @@ outline:1px solid transparent; /* fix for jagged edges in FF on hover transition
 }
 .hexIn * {
 position: absolute;
-visibility: visible;
 outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
 }
 .hexLink {
