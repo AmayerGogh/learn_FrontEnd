@@ -31,7 +31,7 @@ export class Hex
         return new Hex(this.q - b.q, this.r - b.r, this.s - b.s);
     }
 
-
+    //放大
     public scale(k:number):Hex
     {
         return new Hex(this.q * k, this.r * k, this.s * k);
@@ -48,7 +48,7 @@ export class Hex
     {
         return new Hex(-this.r, -this.s, -this.q);
     }
-
+    //初始点周围的6个
     public static directions:Hex[] = [new Hex(1, 0, -1), new Hex(1, -1, 0), new Hex(0, -1, 1), new Hex(-1, 0, 1), new Hex(-1, 1, 0), new Hex(0, 1, -1)];
 
     public static direction(direction:number):Hex
