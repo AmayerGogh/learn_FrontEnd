@@ -1,9 +1,9 @@
 <template>
   <ul id="hexGrid">
-        <li class="hex" v-for="(item) in hexList" :key="item">
+        <li class="hex" v-for="(item) in hexList" :key="item.index" @click="click(item.q+'-'+ item.r +'-' + item.s)">
           <div class="hexIn">
             <div class="hexLink" href="#">
-              <div class="img" style="">
+              <div class="img" style="" v-bind:class="{ img_active: item.active }">
                 <!-- <h4 style="margin-top: 50px;margin-left: 35px;">{{Math.floor(index/18) }} ,{{(index%18) }}</h4> -->
                 <h4 style="margin-top: 50px;margin-left: 35px;">{{item.q }},{{item.r}},{{item.s}}</h4>
               </div>
@@ -21,18 +21,33 @@ export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
   list:Array<number> =new Array(18*10);
   listRow:Array<number> =new Array(18);
-  hexList:Array<Hex> =new Array<Hex>();
+  
+  hexHashList: {[index:string]: Hex} = {}
   mounted(){
     var now =0;
+    var i =0;
     for (let row = 0; row < 16; row++) {
       for (let index = 0; index < 18; index++) {
-          var hex = new Hex(index,0-now,(0 -(0 - now + index)))
-          this.hexList.push(hex);         
+          var q =index;
+          var r =0-now;
+          var s =0 -(0 - now + index);
+          var hex = new Hex(q,r,s);
+          hex.index =i;
+          this.hexHashList[q+"-"+ r +"-" + s] =hex;
+          i++;
       }  
        now ++;    
     }
-   
-    
+  }
+  click(hash:string){    
+    var thisHex = this.hexHashList[hash];
+    console.log(thisHex.q,thisHex.r,thisHex.s);
+    //激活
+    thisHex.active =!thisHex.active;
+
+  }
+  getHex(q:number,r:number,s:number){
+     
   }
 }
 </script>
@@ -121,6 +136,9 @@ margin: 0 auto;
 .img{
   background-color: rgb(173 168 168);
   cursor: pointer;
+}
+.img_active{
+   background-color: red;
 }
 .img:hover{
   background-color: red;

@@ -16,6 +16,15 @@ export class Point
 export class Hex
 {
 
+    //索引
+    index:number =0;
+    //选中
+    active:boolean =false;
+
+//#region 
+   
+//#endregion
+
     constructor (public q:number, public r:number, public s:number) {
         if (Math.round(q + r + s) !== 0) throw "q + r + s must be 0";
     }
