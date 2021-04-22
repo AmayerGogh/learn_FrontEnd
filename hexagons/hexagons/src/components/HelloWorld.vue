@@ -1,6 +1,6 @@
 <template>
   <ul id="hexGrid">
-        <li class="hex" v-for="(item) in hexList" :key="item.index" @click="click(item.q+'-'+ item.r +'-' + item.s)">
+        <li class="hex" v-for="(item) in list" :key="item.index" @click="click(item.q+'-'+ item.r +'-' + item.s)">
           <div class="hexIn">
             <div class="hexLink" href="#">
               <div class="img" style="" v-bind:class="{ img_active: item.active }">
