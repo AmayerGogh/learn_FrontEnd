@@ -4,8 +4,11 @@ export class Hero{
     Atk:number =0;
     //血量
     Hp:number = 0;
+    //法力值
+    Mana:number =0;
 }
 export class CardActive{
+  Id:number=0;
   //攻击力
   CurrentATK:number =0;
   //血量
