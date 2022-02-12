@@ -35,7 +35,7 @@
     "@delon/mock": "^1.1.5",
     "@delon/theme": "^1.1.5",
     "@delon/util": "^1.1.5",
-    "ajv": "^6.4.0",
+    "ajv": "^6.12.3",
     "core-js": "^2.5.4",
     "editorconfig-tools": "^0.1.1",
     "husky": "^0.14.3",
